@@ -28,11 +28,15 @@ A GitHub account is required (that's the point — every suggestion is attributa
 ## Repository layout
 
 ```
-index.html   — the full card deck (also the published site)
-assets/      — logo and static assets
+index.html                      — the full card deck (also the published site)
+quick-dial-cards.pdf            — print-ready PDF (Letter)
+quick-dial-cards-editable.xlsx  — editable workbook, one tab per card
+assets/                         — logo and static assets
 ```
 
-The deck also exists as print-ready PDF and an editable XLSX workbook, kept in sync with this HTML.
+All three deliverables are kept in sync — the HTML is the canonical source.
+
+**Downloads:** [PDF](quick-dial-cards.pdf) · [Editable XLSX](quick-dial-cards-editable.xlsx)
 
 ## License
 

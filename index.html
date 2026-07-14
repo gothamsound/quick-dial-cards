@@ -1,26 +1,933 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Wireless Quick-Dial Cards — Gotham Sound</title>
-<style>
-  body { font-family: Arial, Helvetica, sans-serif; color:#16181d; background:#fafaf6; margin:0; }
-  .wrap { max-width:640px; margin:10vh auto; padding:0 24px; text-align:center; }
-  img.logo { width:220px; height:auto; }
-  h1 { font-size:1.9rem; margin:28px 0 8px; letter-spacing:-.01em; }
-  p { color:#4a4f57; line-height:1.5; }
-  .eyebrow { font-size:.75rem; letter-spacing:.12em; font-weight:700; color:#6a6f33; text-transform:uppercase; margin-top:24px; }
-  a { color:#2f7d52; }
-</style>
-</head>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Wireless Quick-Dial Cards — Gotham Sound</title><style>
+@page { size: Letter portrait; margin: 0.4in 0.5in; }
+* { box-sizing: border-box; }
+html,body { margin:0; padding:0; }
+body { font-family:'DejaVu Sans',Arial,Helvetica,sans-serif; color:#16181d; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+.sheet { page-break-after: always; min-height: 9.7in; display:flex; flex-direction:column; }
+.sheet:last-child { page-break-after:auto; }
+
+.head { display:flex; justify-content:space-between; align-items:flex-start; gap:16px; border-bottom:2.5px solid #16181d; padding-bottom:8px; }
+.eyebrow { font-size:8.5pt; letter-spacing:.12em; font-weight:700; color:#6a6f33; text-transform:uppercase; }
+h1 { font-size:22pt; line-height:1.04; margin:3px 0 2px; letter-spacing:-.01em; }
+.sub { font-size:9.5pt; color:#4a4f57; }
+.logo { width:148px; height:auto; flex:none; margin-top:2px; }
+
+.meta { display:flex; flex-wrap:wrap; gap:7px; margin:9px 0 7px; align-items:center; }
+.tag { font-size:8pt; font-weight:800; letter-spacing:.04em; color:#fff; padding:4px 9px; border-radius:3px; white-space:nowrap; }
+.t-tune { background:#2f7d52; }
+.t-grp  { background:#b7791b; }
+.t-blk  { background:#4a6b86; }
+.t-chan { background:#8a4f1d; }
+.tag.na { background:#7a7f88; }
+.pill { font-size:8.6pt; color:#2a2d33; background:#f1f1ec; border:1px solid #e0e0d6; border-radius:3px; padding:4px 9px; }
+.pill b { color:#16181d; }
+
+.labelrow { font-size:8.8pt; margin:1px 0 10px; }
+.ll { font-weight:700; color:#4a4f57; margin-right:6px; }
+.chip { display:inline-block; font-size:8.2pt; background:#16181d; color:#fff; border-radius:3px; padding:2px 8px; margin:0 5px 4px 0; font-weight:600; }
+
+.groupbar { display:flex; align-items:stretch; border:1.6px solid #b7791b; border-radius:6px; overflow:hidden; margin:0 0 11px; background:#fdf3e4; }
+.gb-tag { flex:none; background:#fdf3e4; padding:9px 11px; display:flex; align-items:center; }
+.gb-txt { font-size:9.1pt; line-height:1.4; padding:8px 11px 8px 0; color:#5b3d0e; }
+
+.procs { display:flex; gap:14px; }
+.proc { flex:1; border:1.4px solid #e1e1d6; border-radius:7px; padding:0 0 8px; overflow:hidden; }
+.proc.tx { border-top:4px solid #2f7d52; }
+.proc.rx { border-top:4px solid #1f6f9e; }
+.proc-h { padding:8px 11px 7px; border-bottom:1px solid #ededdf; background:#fafaf6; }
+.proc-k { display:block; font-size:8pt; font-weight:800; letter-spacing:.08em; }
+.proc.tx .proc-k { color:#2f7d52; }
+.proc.rx .proc-k { color:#1f6f9e; }
+.proc-m { display:block; font-size:10pt; font-weight:700; color:#16181d; margin-top:1px; }
+
+ol.steps { list-style:none; margin:0; padding:10px 11px 0; }
+ol.steps li { display:flex; gap:9px; align-items:flex-start; margin-bottom:10px; }
+ol.steps .num { flex:none; width:21px; height:21px; border-radius:50%; background:#16181d; color:#fff; font-weight:800; font-size:9.5pt; display:flex; align-items:center; justify-content:center; margin-top:1px; }
+ol.steps .txt { font-size:9.7pt; line-height:1.4; }
+
+kbd { font-family:'DejaVu Sans Mono',monospace; font-size:8.2pt; font-weight:700; background:#fff; border:1.3px solid #16181d; border-bottom-width:2.4px; border-radius:4px; padding:1px 5px; color:#16181d; white-space:nowrap; }
+
+.linkbar { display:flex; align-items:stretch; border:1.3px solid #d8d8cf; border-left:4px solid #A6A82B; border-radius:5px; background:#fbfaf3; margin:9px 0 9px; }
+.lk-t { flex:none; font-size:8pt; font-weight:800; letter-spacing:.05em; color:#6a6f33; padding:8px 11px; display:flex; align-items:center; }
+.linkbar span:last-child { font-size:9.2pt; line-height:1.4; padding:8px 11px 8px 0; color:#33373e; }
+
+.rfbar { border:1.3px solid #e3b9a0; border-left:4px solid #c0492b; border-radius:5px; background:#fcefe9; margin:9px 0 0; overflow:hidden; }
+.rf-row { display:flex; align-items:stretch; border-top:1px solid #f2dccf; }
+.rf-row:first-child { border-top:none; }
+.rf-k { flex:none; width:90px; font-size:7.6pt; font-weight:800; letter-spacing:.03em; color:#8a3a22; padding:6px 9px; display:flex; align-items:center; }
+.rf-k.rf-warn { color:#fff; background:#c0492b; }
+.rf-v { font-size:8.8pt; line-height:1.34; padding:6px 10px; color:#3a2a22; }
+
+.watch { border:1.3px solid #e6d4bf; background:#fcf4ec; border-radius:6px; padding:8px 12px; }
+.w-t { font-size:8pt; font-weight:800; letter-spacing:.08em; color:#9a6516; }
+.watch ul { margin:5px 0 0; padding-left:16px; }
+.watch li { font-size:9pt; line-height:1.38; margin-bottom:3px; }
+
+.foot { display:flex; justify-content:space-between; gap:12px; border-top:1px solid #cfcfc6; margin-top:auto; padding-top:6px; font-size:7.7pt; color:#73777f; }
+
+.how { font-size:9.4pt; line-height:1.4; background:#f6f6f1; border:1px solid #e4e4d9; border-radius:6px; padding:8px 11px; margin:9px 0 8px; }
+.legend { display:flex; flex-direction:column; gap:4px; margin-bottom:9px; }
+.legend span { font-size:9.2pt; color:#2a2d33; vertical-align:middle; }
+.legend .tag { margin-right:9px; display:inline-block; min-width:188px; text-align:center; }
+table.router { width:100%; border-collapse:collapse; font-size:9.2pt; }
+table.router th { background:#16181d; color:#fff; text-align:left; font-size:8.2pt; letter-spacing:.04em; text-transform:uppercase; padding:5px 9px; }
+table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-align:middle; }
+.r-lbl { font-weight:600; color:#16181d; width:38%; }
+.r-card { color:#33373e; width:37%; }
+.r-badge { width:25%; }
+.r-badge .tag { display:inline-block; }
+.genrule { font-size:8.7pt; line-height:1.4; background:#fbfaf3; border:1px solid #ece9d4; border-left:4px solid #A6A82B; border-radius:5px; padding:8px 11px; margin-top:8px; }
+/* 16-card index: compact the router so the index stays on one page */
+.router { font-size:8.6pt; }
+.router td { padding:2.6px 8px; }
+.router .tag { font-size:7.3pt; padding:3px 8px; min-width:170px; }
+.legend { gap:2px; margin-bottom:7px; }
+.legend span { font-size:8.8pt; }
+.legend .tag { min-width:178px; font-size:7.5pt; padding:3px 8px; }
+.how { font-size:9pt; padding:7px 11px; margin:7px 0 7px; }
+.genrule { font-size:8.4pt; padding:7px 11px; margin-top:7px; }
+.sheet:first-of-type .head { padding-bottom:5px; }
+.sheet:first-of-type h1 { font-size:21pt; margin:2px 0 1px; }
+.sheet:first-of-type .logo { width:118px; }
+.sheet:first-of-type .how { font-size:8.7pt; line-height:1.32; padding:6px 10px; margin:6px 0 6px; }
+.sheet:first-of-type .legend { gap:1px; margin-bottom:6px; }
+.sheet:first-of-type .router td { padding:2.1px 8px; }
+.sheet:first-of-type .genrule { font-size:8.1pt; line-height:1.32; padding:6px 10px; margin-top:6px; }
+</style></head>
 <body>
-<div class="wrap">
-  <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound">
-  <div class="eyebrow">Frequency coordination · Transmitter &amp; receiver quick-dial</div>
-  <h1>Wireless Quick-Dial Cards</h1>
-  <p>The full card deck is being published here shortly.</p>
-  <p>Spot something that needs fixing? <a href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose">Suggest a change</a> (GitHub account required).</p>
-</div>
-</body>
-</html>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">FREQUENCY COORDINATION · TRANSMITTER &amp; RECEIVER QUICK-DIAL</div>
+      <h1>Wireless Quick-Dial Cards</h1>
+      <div class="sub">Setting an assigned frequency on transmitter &amp; portable receiver</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="how">
+    <b>How to use:</b> when a unit is checked in, find its family below and turn to the card. Each card has
+    <b>two procedures</b> — one for the <b>transmitter</b>, one for the <b>portable receiver</b> — each set up to dial an
+    <i>arbitrary</i> assigned frequency, not just a preset. The colored tag says how that family reaches an arbitrary MHz.
+  </div>
+
+  <div class="legend">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span><span>Free-tune to any MHz (user bank / Tune / Frequency field).</span>
+    <span class="tag t-grp">PICK FINE GROUP FIRST</span><span>You must select a <b>fine / unlocked group</b> first, then set the freq (Sony, Wisycom).</span>
+    <span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span><span>Free-tune within a fixed hardware <b>block</b>; TX and RX must share the block (Lectro).</span>
+    <span class="tag t-chan">CHANNEL CHART ONLY</span><span>Channels only — pick from the published <b>channel chart</b>; no arbitrary MHz dial (Comtek).</span>
+  </div>
+
+  <table class="router">
+    <thead><tr><th>Family (TX / RX)</th><th>Use this card</th><th>How to reach any MHz</th></tr></thead>
+    <tbody><tr><td class="r-lbl">Sennheiser Evol G3 / G4 (SK/SKM)</td><td class="r-card">Sennheiser evolution G3 / G4</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Sennheiser EM6000 / SK(M) 6000</td><td class="r-card">Sennheiser Digital 6000</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Sennheiser 2000 (SK/SKM/SKP 2000)</td><td class="r-card">Sennheiser 2000 Series</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Sennheiser 3000/5000 (SK 5212 / SKM 5200)</td><td class="r-card">Sennheiser 3000 / 5000 Series</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Shure ULXD (ULXD1 / ULXD2)</td><td class="r-card">Shure ULX-D</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Shure Axient AD / ADX</td><td class="r-card">Shure Axient Digital</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Shure PSM-1000 (P10T / P10R+)</td><td class="r-card">Shure PSM 1000</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Sony UWP / UWP-D (UTX…)</td><td class="r-card">Sony UWP-D</td><td class="r-badge"><span class="tag t-grp">PICK FINE GROUP FIRST</span></td></tr><tr><td class="r-lbl">Sony DWX (DWR / DWT)</td><td class="r-card">Sony DWX Digital</td><td class="r-badge"><span class="tag t-grp">PICK FINE GROUP FIRST</span></td></tr><tr><td class="r-lbl">Wisycom MTP / MCR</td><td class="r-card">Wisycom MTP / MCR</td><td class="r-badge"><span class="tag t-grp">PICK FINE GROUP FIRST</span></td></tr><tr><td class="r-lbl">Lectrosonics block units (SMV/SMQV…)</td><td class="r-card">Lectrosonics Digital Hybrid</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Lectrosonics wideband (LT / LR “3 Block”)</td><td class="r-card">Lectrosonics L-Series wideband</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Lectrosonics IFB (IFBT4 → IFBlue)</td><td class="r-card">Lectrosonics IFB (IFBlue)</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Lectrosonics Duet (M2T → M2R / M2Ra)</td><td class="r-card">Lectrosonics Duet (M2T / M2Ra)</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Comtek 216 (BST-25/216 → PR-216)</td><td class="r-card">Comtek 216 (BST-25 / PR-216)</td><td class="r-badge"><span class="tag t-chan">CHANNEL CHART ONLY</span></td></tr><tr><td class="r-lbl">Sound Devices Astral (A20-TX/Mini/HH)</td><td class="r-card">Sound Devices Astral (A20)</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Generic / unspecified model</td><td class="r-card">— verify the actual hardware at check-in</td><td class="r-badge"><span class="tag na">VERIFY</span></td></tr></tbody>
+  </table>
+
+  <div class="genrule">
+    <b>Four rules that prevent most check-in failures:</b>
+    (1) <b>never power up an uncoordinated transmitter with RF on</b> — put it in its RF-off / standby / mute state first (see each card’s red <b>RF OFF FIRST</b> note), set the assigned frequency, <i>then</i> enable RF;
+    (2) transmitter and receiver must be in the <b>same band / block</b>;
+    (3) on Sony &amp; Wisycom, select the <b>fine / unlocked group</b> before an arbitrary frequency is reachable;
+    (4) on digital systems an <b>IR-sync</b> (RX→TX) copies the frequency onto the other unit — re-sync after band or encryption changes.
+  </div>
+
+  <footer class="foot">
+    <span>16 cards · transmitter + portable receiver each</span>
+    <span>Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 1 OF 16</div>
+      <h1>Sennheiser evolution G3 / G4</h1>
+      <div class="sub">Analog UHF · portable (camera) receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> Tune only inside the unit’s band letter (A 516–558, G 566–608, Aw+ 470–558…)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sennheiser Evol G3 A</span><span class="chip">Sennheiser Evol G3 G</span><span class="chip">Sennheiser Evol G4 Aw+</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SK / SKM (bodypack / handheld)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>SET</kbd> (jog/rocker) → scroll to <b>Tune</b> → <kbd>SET</kbd>. Unit jumps to user bank <b>U</b>; RF mutes.</span></li><li><span class="num">2</span><span class="txt"><kbd>UP</kbd>/<kbd>DOWN</kbd> to dial the assigned <b>MHz</b> (25 kHz steps; hold to scroll). <kbd>SET</kbd> to store.</span></li><li><span class="num">3</span><span class="txt"><kbd>ESC</kbd> back to home; confirm the MHz on screen.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">EK 100 G3 / G4 (camera receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>SET</kbd> → <b>Advanced</b> → <b>Tune</b> → <kbd>SET</kbd> (selects user bank <b>U</b>).</span></li><li><span class="num">2</span><span class="txt"><kbd>UP</kbd>/<kbd>DOWN</kbd> to the same <b>MHz</b>; <kbd>SET</kbd> to store.</span></li><li><span class="num">3</span><span class="txt">Or set the RX here, then <kbd>SYNC</kbd> the transmitter to it via IR.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Set the MUTE switch to <b>RF MUTE</b> (menu), engage mute <i>before</i> power-up (display shows it muted), tune, then unmute. The <b>Tune</b> menu also mutes RF while you set the freq.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">300/500-series: <b>10 / 30 / 50 mW</b> (Low/Std/High) in <b>Advanced ▸ RF Power</b>. 100-series: fixed (~30 mW).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Bank presets (1–20) only hold fixed compatible channels — use <b>Tune</b> (bank U) to reach an arbitrary freq.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>RX and TX must be the same band letter, or they can’t meet on frequency.</li><li>G3 and G4 tune identically.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 2 OF 16</div>
+      <h1>Sennheiser Digital 6000</h1>
+      <div class="sub">Digital UHF · portable (camera) receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> Up to 88–184 MHz tuning, depending on unit</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sennheiser EM6000 A1-4</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SK 6000 / SKM 6000</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">On the TX, open the menu with the function buttons → <b>Frequency</b>.</span></li><li><span class="num">2</span><span class="txt">Set the assigned <b>MHz</b> (25 kHz steps); confirm.</span></li><li><span class="num">3</span><span class="txt">Match the <b>transmission mode</b> (e.g. LR) to the receiver, or the link won’t form.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">EK 6042 (2-ch camera receiver, LR)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press the channel button → <b>CH Settings</b> → <b>Tune</b> (“manually sets the frequency”).</span></li><li><span class="num">2</span><span class="txt">Set the same <b>MHz</b>; confirm.</span></li><li><span class="num">3</span><span class="txt">Then <b>Sync</b> transfers the frequency to the transmitter over IR.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">No standby-off on the pack — set the freq on the EM 6000 / EK 6042 and <b>IR-sync before the pack goes live</b>; keep it muted/locked until confirmed.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">Set by <b>mode</b>: LR = <b>25 mW</b>, LD ≈ 1 mW (SK 6212: 14 / 4 mW) — not a free dial.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>EK 6042 / EM 6000 → <b>Sync ▸ Frequency Only</b> pushes just the freq, leaving other settings alone.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Digital 6000 TX work with EK 6042 in <b>Long-Range (LR)</b> mode — set both to LR.</li><li>EM 6000 is the rack receiver; EK 6042 is the portable equivalent.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 3 OF 16</div>
+      <h1>Sennheiser 2000 Series</h1>
+      <div class="sub">Analog UHF (high-band) · portable (camera) receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> Up to 75 MHz switching bandwidth; tune inside the unit’s band (e.g. Aw, Gw, Bw). 25 kHz steps.</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sennheiser EM 2000</span><span class="chip">SK 2000 / SKM 2000</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SK 2000 / SKM 2000 / SKP 2000 (bodypack / handheld / plug-on)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press the <kbd>jog dial</kbd> → <b>Advanced</b> → <b>Tune</b>. Pick a <b>user bank (U1–U6)</b>; the fixed banks 1–20 are intermod presets only.</span></li><li><span class="num">2</span><span class="txt">Set the channel and dial the assigned <b>MHz</b> (25 kHz steps); press the <kbd>jog</kbd> to store.</span></li><li><span class="num">3</span><span class="txt">Easier: set it on the receiver and IR-sync down to the TX (right). RF mutes during sync.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">EK 2000 (camera receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press the <kbd>rocker</kbd>/<kbd>jog</kbd> → <b>Advanced</b> → <b>Tune</b>; select a <b>user bank (U1–U6)</b> and channel.</span></li><li><span class="num">2</span><span class="txt">Set the same assigned <b>MHz</b> (25 kHz); store the setting.</span></li><li><span class="num">3</span><span class="txt">Hold the RX IR window to the TX IR window → <b>Sync</b>: the freq transfers to the TX; press the TX <kbd>jog</kbd> to save.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Press <kbd>STANDBY</kbd> to mute RF before power-up; set/sync the freq, then leave standby to go live. Sync itself mutes the TX RF while transferring.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>10 / 30 / 50 mW</b> (US: up to 100 mW) — <b>Advanced ▸ RF Power</b> on the TX.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>EM 2000 / EK 2000 → <b>Advanced ▸ Sync</b> transfers the frequency to the transmitter over IR. Or set both by hand to the same bank / channel / MHz.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>RX and TX must share the same band / range, or they can’t meet on frequency.</li><li>Fixed banks 1–20 are presets only — use a <b>user bank (U1–U6)</b> to land on an arbitrary coordinated MHz.</li><li>2000 series sits above ew G3/G4 and below 3000/5000 — same 25 kHz raster, jog-dial menu.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;&middot;&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 4 OF 16</div>
+      <h1>Sennheiser 3000 / 5000 Series</h1>
+      <div class="sub">SK 5212-II bodypack · SKM 5200-II handheld · SKP 3000 plug-on — EK 3241 portable receiver</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 5 kHz — finest on these cards</span>
+    <span class="pill"><b>Range</b> Tune within the unit’s switching bandwidth (≈ 36 MHz on SK 5212-II / EK 3241); stay in the legal range.</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sennheiser EM 3732 / 3732-II</span><span class="chip">SK 5212(-II)</span><span class="chip">SKM 5200(-II)</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SK 5212(-II) / SKM 5200(-II) / SKP 3000 (bodypack / handheld / plug-on)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Deactivate the autolock if on. Open the menu → <b>CHAN</b>: pick a <b>VAR-bank</b> channel (the <b>FIX</b> bank is service-locked presets).</span></li><li><span class="num">2</span><span class="txt">Go to <b>TUNE</b> and set the assigned <b>MHz</b> — tunes in <b>5 kHz</b> steps; press <kbd>SET</kbd> to store (“STORED”).</span></li><li><span class="num">3</span><span class="txt">Set output in <b>POWER</b>, then EXIT. (TUNE / CHAN only take effect once you <kbd>SET</kbd> them.)</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">EK 3241 (camera receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Use <kbd>CHAn</kbd> to pick a channel in bank <b>“U”</b> (the variable bank; bank “F” is 32 factory presets).</span></li><li><span class="num">2</span><span class="txt">Open <kbd>tunE</kbd> and set the same <b>MHz</b> by hand (5 kHz steps); press <kbd>SET</kbd> (“StorEd”).</span></li><li><span class="num">3</span><span class="txt"><b>No IR sync on this receiver</b> — confirm the MHz matches the TX exactly. (Use an EM 3732 rack if you need IR sync.)</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">No standby-off boot — set the freq in <b>TUNE</b> (and a low <b>POWER</b> level) before the pack is near other rigs; confirm, then raise power / go live.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">Set in the <b>POWER</b> menu on the TX (selectable output — verify the levels on your unit, e.g. 10 / 50 mW).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>The EK 3241 camera receiver has <b>no IR transmitter-sync</b> — match the frequency by hand on both ends (5 kHz). An EM 3732 rack can IR-sync the transmitters if you have one.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>FIX bank = service-locked intermod presets; use the <b>VAR bank</b> to land on a coordinated MHz.</li><li>EK 3241 has no transmitter IR-sync — match by hand (or sync from an EM 3732 rack).</li><li>TX and RX must share the same range / band.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;&middot;&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 5 OF 16</div>
+      <h1>Shure ULX-D</h1>
+      <div class="sub">Digital UHF · (no portable receiver — half-rack ULXD4 shown)</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> Band on the label must match (e.g. G50 = 470–534 MHz)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Shure ULXD4 G50</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">ULXD1 / ULXD2 (bodypack / handheld)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">On the TX, <kbd>MENU</kbd> → navigate with <kbd>▲</kbd><kbd>▼</kbd> to the <b>Frequency</b> field.</span></li><li><span class="num">2</span><span class="txt"><kbd>▲</kbd>/<kbd>▼</kbd> to set the assigned <b>MHz</b> (25 kHz); <kbd>ENTER</kbd> to save.</span></li><li><span class="num">3</span><span class="txt">Or just IR-sync from the receiver (see right) — simpler in practice.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">ULXD4 (half-rack receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Open the channel’s <b>RADIO</b> screen; push the <kbd>control wheel</kbd> to edit.</span></li><li><span class="num">2</span><span class="txt">Rotate to the <b>Frequency</b> field and set the assigned <b>MHz</b> directly; <kbd>ENTER</kbd> to save.</span></li><li><span class="num">3</span><span class="txt">Align IR windows, press <kbd>SYNC</kbd> → <b>Sync Success</b> copies it to the TX.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">ULX-D radiates whenever it’s on — <b>IR-sync the assigned (coordinated) freq from the receiver before</b> bringing the pack up near other rigs.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>1 / 10 / 20 mW</b> (RF Power — on the TX menu, or pushed from the receiver).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>In the RADIO menu you can set Group/Channel <i>or</i> edit the <b>Frequency</b> field for an exact coordinated MHz.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>ULX-D has no bodypack/portable receiver — all receivers are rack/half-rack.</li><li>Re-sync after enabling/disabling <b>encryption</b>. TX and RX must share the band.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 6 OF 16</div>
+      <h1>Shure Axient Digital</h1>
+      <div class="sub">Digital UHF · portable receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> G55 470–636 · K57 606–790 · X55 941–960 MHz (legal spectrum only)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Shure AD G55</span><span class="chip">Shure AD X55</span><span class="chip">Shure AD K57</span><span class="chip">Shure AD-B K57</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">AD1/ADX1 · AD2/ADX2 (pack/handheld)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">On the TX, <kbd>MENU</kbd> → <b>Frequency</b>; <kbd>control wheel</kbd> / arrows to set the assigned <b>MHz</b>; <kbd>ENTER</kbd>.</span></li><li><span class="num">2</span><span class="txt">Or IR-sync from the receiver (right). ADX can also be re-tuned remotely via ShowLink / AD610.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">ADX5D (2-ch portable receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Select the channel; open its RF/Frequency screen; push the <kbd>control wheel</kbd> to edit.</span></li><li><span class="num">2</span><span class="txt">Set the assigned <b>Frequency (MHz)</b> directly (or Group/Channel); <kbd>ENTER</kbd> to save.</span></li><li><span class="num">3</span><span class="txt">Power the TX, press <kbd>SYNC</kbd>, align IR windows until the LED glows red → <b>Sync Success!</b></span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Turn on <b>Safe Start</b> so the TX boots <b>RF-muted</b> (Power LED <b>red</b>), or use <b>RF Mute</b>. Set/sync the freq, then unmute.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>2 / 10 / 35 mW</b> (Radio menu; some bands 2 / 10).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Channels are grouped for intermod safety, but you can type an exact <b>Frequency</b> on either device.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Receiver <b>RF Band</b> must equal the TX band; after changing RF band, re-sync every TX.</li><li>ADX5D is the portable receiver; AD4D/AD4Q are the rack versions.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 7 OF 16</div>
+      <h1>Shure PSM 1000  (IEM / IFB)</h1>
+      <div class="sub">Digital UHF · the bodypack IS the portable receiver</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> Band on the label (e.g. G10 = 470–542 MHz)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Shure PSM-1000 G10</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">P10T (rack transmitter)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>ENTER</kbd> → select the channel (TX1/TX2) → <b>RADIO / Frequency</b> screen.</span></li><li><span class="num">2</span><span class="txt"><kbd>ENTER</kbd> to edit; wheel/arrows to set the assigned <b>MHz</b> (or Group/Channel); <kbd>ENTER</kbd> to save.</span></li><li><span class="num">3</span><span class="txt">Align the earpack IR window and press <kbd>SYNC</kbd> to push the freq to it.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">P10R+ (bodypack receiver, worn)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>ENTER</kbd> to open the menu → <b>Group/Channel/Frequency</b>.</span></li><li><span class="num">2</span><span class="txt">Edit the <b>Frequency</b> to the assigned <b>MHz</b>; confirm.</span></li><li><span class="num">3</span><span class="txt">Or scan on the P10R+, then IR-<b>sync up</b> to the P10T.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Use the P10T’s <b>RF MUTE</b> (front panel, per channel) before it’s on a frequency; set the channel, then un-mute.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>10 / 50 / 100 mW</b> (P10T Radio menu ▸ PWR).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Here the <b>transmitter is the rack (P10T)</b> and the <b>receiver is the bodypack (P10R+)</b> — reverse of a mic.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>P10T and P10R+ must be the same band.</li><li>Switch RF off before powering up near other systems.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 8 OF 16</div>
+      <h1>Sony UWP-D</h1>
+      <div class="sub">Analog UHF + digital audio · portable receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-grp">PICK FINE GROUP FIRST</span>
+    <span class="pill"><b>Step</b> 25 kHz raster</span>
+    <span class="pill"><b>Range</b> Band on the label (UC14 470–542, UC25 536–608…)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sony UWP (UTX-B40 / M40 / P40)</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-grp">PICK FINE GROUP FIRST</span></span><span class="gb-txt">To reach <b>any</b> coordinated MHz, both units must be in a fine group: the group whose number <b>matches the TV channel</b> (e.g. Group <b>14</b> for TV-14) — these step in <b>25 kHz</b>. The low groups <b>01–09</b> are intermod presets with only a few fixed channels and will NOT reach an arbitrary freq.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">UTX-B40 / M40 / P40 (TX)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Power OFF, then hold <kbd>SET</kbd> + <kbd>POWER</kbd> ~1 s → <b>transmission-stopped</b> mode (RF off).</span></li><li><span class="num">2</span><span class="txt"><kbd>+</kbd>/<kbd>–</kbd> to <b>GP/CH</b>; hold <kbd>SET</kbd> until <b>GROUP</b> flashes → pick the <b>TV-channel-number group</b> (not 01–09); <kbd>SET</kbd>.</span></li><li><span class="num">3</span><span class="txt"><b>CHANNEL</b> flashes → <kbd>+</kbd>/<kbd>–</kbd> to the channel = assigned <b>MHz</b>; <kbd>SET</kbd>. Power-cycle to transmit.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">URX-P40 (portable diversity tuner)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>+</kbd>/<kbd>–</kbd> to <b>GP/CH</b>; hold <kbd>SET</kbd> to edit. Select the same <b>TV-channel-number group</b>, then the channel matching the <b>MHz</b>.</span></li><li><span class="num">2</span><span class="txt">Confirm the MHz on the OLED.</span></li><li><span class="num">3</span><span class="txt">Or run <b>NFC / IR SYNC (RX→TX)</b> to copy the receiver’s freq to the transmitter.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">You’re already RF-off: GP/CH is set in <b>transmission-stopped mode</b> (hold SET+POWER). Only power-cycle to transmit once the freq is right.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>5 / 30 mW</b> selectable (J/E/KR versions: 2 / 10 mW).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Use Sony’s <b>UWP-D Frequency List</b> to map an assigned MHz → Group/Channel. Group 00 = coarse 125 kHz steps.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Stuck on only a few channels = you’re in a preset group (01–09); switch to the TV-channel group.</li><li>GP/CH & BAND change only with transmission stopped.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 9 OF 16</div>
+      <h1>Sony DWX Digital</h1>
+      <div class="sub">Digital UHF · portable (slot) receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-grp">PICK FINE GROUP FIRST</span>
+    <span class="pill"><b>Step</b> 25 kHz (US 375 kHz channel plan)</span>
+    <span class="pill"><b>Range</b> TX block must match the RX (e.g. TV14–17 = 470–494 MHz)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sony DWR / DWT (“TV1417”, “DWT 15-075”…)</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-grp">PICK FINE GROUP FIRST</span></span><span class="gb-txt">Frequency = <b>Band → Group → Channel</b>. The factory groups are the <b>TV-channel blocks</b> (TV14–17, TV18–21…) stepping in 25 kHz — select the one that contains the assigned MHz; small preset groups carry only a few intermod-safe channels.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">DWT-B03R / B01N / P-series (TX)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Power OFF, hold <kbd>SET</kbd> and turn on → setting mode (transmission stopped).</span></li><li><span class="num">2</span><span class="txt"><kbd>+</kbd>/<kbd>–</kbd> to <b>GP/CH</b>; hold <kbd>SET</kbd> until <b>GROUP</b> flashes → pick the TV-channel group; <kbd>SET</kbd>.</span></li><li><span class="num">3</span><span class="txt"><b>CHANNEL</b> flashes → set to the channel = assigned <b>MHz</b>; <kbd>SET</kbd>. Power-cycle to transmit.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">DWR-S03D (2-ch slot receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Open the channel menu → Group/Channel; <kbd>SET</kbd> to edit. Pick the TV-channel group, then the channel = <b>MHz</b>.</span></li><li><span class="num">2</span><span class="txt">Confirm the MHz on the OLED.</span></li><li><span class="num">3</span><span class="txt">Or press <kbd>MENU SEL</kbd>+<kbd>SET</kbd> to auto-scan, then <b>Cross Remote</b> pushes the freq to the TX.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">You’re already RF-off: GP/CH is set in <b>setting mode</b> (hold SET while powering on = transmission stopped). Power-cycle to transmit after the freq is set.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>2 / 10 / 25 mW</b> selectable (DWT-B03R).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Cross Remote / pairing carries the exact freq from RX to TX. Use the Sony <b>DWX Frequency List</b> for the mapping.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>TX band/block must match the RX or they won’t link.</li><li>A small preset group shows only a few channels — move to the TV-channel group.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 10 OF 16</div>
+      <h1>Wisycom MTP / MCR</h1>
+      <div class="sub">Wideband UHF · portable receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-grp">PICK FINE GROUP FIRST</span>
+    <span class="pill"><b>Step</b> fine (to 25 kHz)</span>
+    <span class="pill"><b>Range</b> Very wide — Band 1 ≈ 470–640 MHz</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Wisycom Band 1 470-640</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-grp">PICK FINE GROUP FIRST</span></span><span class="gb-txt"><b>TUNING</b> holds a <b>Group (GR 0–39)</b> and <b>Channel (CH 0–59)</b>; you edit the frequency inside the selected slot. A group can be <b>locked or hidden</b> — to free-tune, first select an <b>unlocked</b> group (the <b>USER</b> / free-tune group, or one left tunable in Wisycom Manager).</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">MTP40S / MTP60 (bodypack TX)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>MTP60</b>: <kbd>SEL</kbd>+<kbd>UP</kbd> → <b>Setup</b> → <b>TUNING</b>. At <b>GR</b>, pick an <b>unlocked/USER</b> group; move to <b>CH</b>.</span></li><li><span class="num">2</span><span class="txt">At <b>Freq</b>, <kbd>SEL</kbd> to edit, <kbd>UP</kbd>/<kbd>DOWN</kbd> to set the <b>MHz</b>, <kbd>SEL</kbd> to save.</span></li><li><span class="num">3</span><span class="txt"><b>MTP40S</b>: use the scroll <kbd>selector</kbd> / <kbd>CH</kbd> keys → set <b>GR</b> (unlocked) → <b>CH</b> → <b>Freq</b>.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">MCR42 / MCR54 (portable receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Open <b>TUNING</b> → select an <b>unlocked group</b>, then a channel slot.</span></li><li><span class="num">2</span><span class="txt">Set the <b>Freq</b> to the assigned <b>MHz</b>; confirm.</span></li><li><span class="num">3</span><span class="txt">Or <b>IR-sync</b> the transmitter to the receiver (carries freq + group + channel).</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Power up with transmission disabled — <b>MTP60</b>: hold EXIT/OFF to switch on without RF (or set RF Power = <b>OFF</b>); <b>MTP40S</b>: leave the wireless switch off. <b>LED2 RED = RF off</b>; set the freq, then enable a power level — <b>LED2 GREEN = radiating</b>.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">MTP60: <b>10 / L10 / 20 / L20 / 50 / 100 mW</b> (+ OFF). MTP40S: <b>10 / 50 / 100 mW</b>. (RF ▸ Power)</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>If the freq won’t change, the active group is <b>locked/hidden</b> — switch to the USER / free group.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Enable RF — wireless power switch to <b>I</b> (LED green). Set the correct battery type.</li><li>Keep one open group for field tuning; locks live in Wisycom Manager.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 11 OF 16</div>
+      <h1>Lectrosonics Digital Hybrid</h1>
+      <div class="sub">Block UHF · portable (slot) receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span>
+    <span class="pill"><b>Step</b> 100 kHz front-panel (25 kHz via hex / PC / IR)</span>
+    <span class="pill"><b>Range</b> Fixed BLOCK on the housing (470, 19, 21, 22…)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Lectro 100 kHz Block 19</span><span class="chip">Block 21</span><span class="chip">Block 22</span><span class="chip">Lectro 25 kHz Block 470</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></span><span class="gb-txt">No menus full of presets — each unit free-tunes <b>within its hardware BLOCK</b>. The only “group” rule: <b>TX and RX must be the same block</b>. Confirm the block (engraved on the housing; shown at power-up) before tuning.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SMV / SMQV (and SMa, SSM, LT…)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">From home, press and <b>HOLD</b> <kbd>FREQ</kbd>; while holding, <kbd>UP</kbd>/<kbd>DOWN</kbd> moves the freq in 100 kHz steps. Release to set.</span></li><li><span class="num">2</span><span class="txt">Press <kbd>FREQ</kbd> again to toggle the display between <b>MHz</b> and the 2-digit <b>hex</b> channel.</span></li><li><span class="num">3</span><span class="txt">To set with RF off, boot Standby: from OFF hold UP, then press AUDIO+FREQ together.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">SRc / SRc5P (2-ch slot receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>MENU/SEL</kbd> to open setup; pick the receiver (1 or 2).</span></li><li><span class="num">2</span><span class="txt">Hold <kbd>MENU/SEL</kbd> + <kbd>UP</kbd>/<kbd>DOWN</kbd> to step the <b>frequency</b> (or use SCAN, then set).</span></li><li><span class="num">3</span><span class="txt">Then trigger <b>IR SYNC</b> to copy the receiver’s freq to the transmitter.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Boot in <b>STANDBY</b> (RF off): from OFF hold UP, then press AUDIO+FREQ together — the unit powers up with the RF carrier off. Set the freq, then leave Standby to transmit.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>50 / 100 / 250 mW</b> in the Power menu (250 mW not on the 941 band).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Block = the fixed hardware range; it can’t be changed in the field on single-block units. Match TX and RX blocks.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>If TX and RX blocks differ, they will never link.</li><li>Coordinated freqs on 100 kHz boundaries are reachable from the front panel; finer steps need hex / PC / IR.</li><li>Blocks run past TV-band UHF — “Lectro 100 kHz Block 944” on a report = the 944–952 MHz STL band; same tuning drill.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 12 OF 16</div>
+      <h1>Lectrosonics L-Series wideband</h1>
+      <div class="sub">Digital Hybrid UHF · spans 3 legacy blocks · portable receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span>
+    <span class="pill"><b>Step</b> 100 kHz default — set Step Size = 25 kHz</span>
+    <span class="pill"><b>Range</b> A1 470.100–537.575 · B1 537.600–614.375 · C1 614.400–691.175 (each unit covers one 3-block range)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Lectrosonics 3 Block A1</span><span class="chip">Lectrosonics 3 Block B1</span><span class="chip">LT / LMb → LR</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></span><span class="gb-txt">Same Digital Hybrid family as the block-units card, but each unit free-tunes across <b>three legacy blocks</b> (“3 Block” on reports). The catch is the <b>Step Size</b> setting: front panels default to <b>100 kHz</b> — set <b>Step Size = 25 kHz on BOTH ends</b> or a .025 / .050 / .075 assignment is unreachable.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">LT / LMb (bodypack transmitters)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Power on in <b>Standby Mode</b> — the RF carrier stays off (“Standby” in the Main Window) while you browse menus and tune.</span></li><li><span class="num">2</span><span class="txt">Menu → <b>StepSize</b>: set <b>25 kHz</b>. Then <b>Frequency</b>: <kbd>UP</kbd>/<kbd>DOWN</kbd> to the assigned <b>MHz</b>.</span></li><li><span class="num">3</span><span class="txt"><b>Rf On</b> from the Main / Power menu once confirmed — or IR-sync from the LR first, then enable RF.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">LR (camera-mount receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>MENU/SEL</kbd> → set <b>Step Size = 25 kHz</b>, then open <b>Frequency</b> (or run <b>SmartTune</b> to scan for clear air).</span></li><li><span class="num">2</span><span class="txt">Dial the same assigned <b>MHz</b>; confirm on the LCD.</span></li><li><span class="num">3</span><span class="txt">Trigger <b>IR sync</b> at the transmitter to copy the LR’s frequency across (RX → TX).</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Power the LT / LMb on in <b>Standby Mode</b> (RF off) and do all tuning there; turn <b>Rf On</b> from the Main / Power menu once set. <b>AutoOn</b> in the Power menu controls whether RF comes up at boot.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>50 / 100 mW</b> (Power menu).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>TX and RX ranges must overlap on the assigned MHz (A1 / B1 / C1 spans). <b>Step Size must match on both ends</b> — same rule as the block-units card, wider hardware.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Reports list these as <b>“Lectrosonics 3 Block A1 / B1”</b> — the wideband LT / LR family, not the single-block SMV card.</li><li>Step Size left at 100 kHz silently hides .025 / .050 / .075 assignments — set <b>25 kHz</b> on both TX and RX.</li><li>Compat mode (Digital Hybrid / 100 / 200 / IFB / Mode 3…) must match the receiver or no audio.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;&middot;&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 13 OF 16</div>
+      <h1>Lectrosonics IFB (IFBlue)</h1>
+      <div class="sub">Block UHF/VHF IFB — talent &amp; crew cue feeds · portable receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span>
+    <span class="pill"><b>Step</b> 25 / 100 kHz (VHF 125 kHz)</span>
+    <span class="pill"><b>Range</b> Fixed ~75 MHz range; RX & TX ranges must match (A1 470–537, B1 537–614, C1 614–692; VHF 174–216)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Lectro IFBT4</span><span class="chip">IFBT2.0</span><span class="chip">Digital Hybrid TX in IFB mode</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></span><span class="gb-txt">IFB is one-way: an IFB transmitter feeds belt-pack receivers. No presets to fight — each unit free-tunes within its <b>range/block</b>. Rule: the <b>receiver’s range must contain the transmitter’s frequency</b>, and both must be in the same <b>compatibility mode</b> (IFB / Nu Hybrid / 400).</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">IFBT4 / IFBT2.0 (or any Lectro DH TX in IFB mode)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>IFBT4</b>: set the switch to <b>TUNE</b> (RF off — freq changes only in TUNE). Set <b>COMPAT</b> to match the RX (IFB is the default).</span></li><li><span class="num">2</span><span class="txt">Press <kbd>MENU</kbd> to the <b>Frequency</b> window; <kbd>UP</kbd>/<kbd>DOWN</kbd> to the assigned <b>MHz</b> (<kbd>MENU</kbd>+<kbd>UP</kbd>/<kbd>DOWN</kbd> jumps 16 ch). TUNING = <b>NORMAL</b> for free choice.</span></li><li><span class="num">3</span><span class="txt">Flip to <b>XMIT</b> to go on air. (<b>IFBT2.0</b>: menu-driven colour LCD — pick the channel’s Frequency + mode within its A1/B1/C1 range.)</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">IFBlue IFBR1C / IFBR1B (belt-pack)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>FREQ</kbd> to show the receiver frequency in <b>MHz</b>.</span></li><li><span class="num">2</span><span class="txt"><kbd>UP</kbd>/<kbd>DOWN</kbd> to the assigned <b>MHz</b> (25 or 100 kHz steps; VHF 125 kHz). <kbd>FREQ</kbd>+<kbd>UP</kbd>/<kbd>DOWN</kbd> jumps 1 MHz.</span></li><li><span class="num">3</span><span class="txt">Store it to one of the <b>10 presets</b>; <kbd>UP</kbd>/<kbd>DOWN</kbd> then scrolls saved freqs on the fly. (IFBR1C tunes the same way in a tinier body.)</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Set the IFBT4 switch to <b>TUNE</b> — RF is off (a blinking <b>“T”</b> shows) and the freq can only be changed here. Flip to <b>XMIT</b> once set.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">IFBT4: ~250 mW. IFBT2.0: selectable <b>10 / 25 / 50 / 100 / 250 mW</b>.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>No sync.</b> Set the <b>same MHz</b> on TX and RX, keep both in the same <b>compatibility mode</b>, and make sure the RX range covers the TX frequency. A <b>pilot tone</b> keeps the RX muted until it sees a valid signal.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>RX and TX must share the tuning range (A1/B1/C1 or VHF) or it can’t tune there.</li><li>Hearing nothing? Check COMPAT mode and the pilot tone — not just the frequency.</li><li>IFBT4 frequency changes only in TUNE, not XMIT.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 14 OF 16</div>
+      <h1>Lectrosonics Duet (M2T / M2Ra)</h1>
+      <div class="sub">Digital UHF IEM / IFB · the bodypack IS the portable receiver</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz</span>
+    <span class="pill"><b>Range</b> A1B1 470.100–607.975 (NA) · B1C1 version 537–691 — the unit’s range must cover the assigned MHz</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Lectrosonics M2T A1B1</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">M2T (half-rack TX — two carriers, two audio ch each)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>Menu</kbd> → <b>RF Tuning</b> → pick the carrier (each of the two carriers tunes separately); <kbd>UP</kbd>/<kbd>DOWN</kbd> in <b>25 kHz</b> steps; confirm.</span></li><li><span class="num">2</span><span class="txt"><b>RF Enable/Level</b>: keep the carrier <b>off</b> while tuning; set the power level per carrier.</span></li><li><span class="num">3</span><span class="txt">Or drive the whole rack from <b>Wireless Designer</b> (USB / Ethernet) — freq, names, levels.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">M2Ra (belt-pack stereo receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Open the menu and tune to the assigned <b>MHz</b> (25 kHz steps) — or run <b>SmartTune</b> to scan on-site RF.</span></li><li><span class="num">2</span><span class="txt"><b>2-way IR sync</b>: hold the M2Ra to the M2T’s IR port — settings and scan data transfer between units (RX → TX works).</span></li><li><span class="num">3</span><span class="txt">If the rig uses a <b>FlexList</b>, pick the feed by name instead of dialing.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">The <b>RF Enable/Level</b> menu keeps each carrier OFF until you explicitly enable it — tune first, enable second. Same habit as the SMV standby boot, just menu-driven.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>10 / 25 / 50 mW per carrier</b> (RF Enable/Level menu).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Transmitter is the rack (M2T), receiver is the belt-pack (M2Ra) — reverse of a mic, like PSM 1000. 2-way IR sync moves settings in either direction.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Not the IFB card: Duet is the <b>digital stereo</b> IEM system. The M2Ra’s <b>IFB / D2 / HDM</b> compat modes let it stand in for an IFB R1a or D-Squared receiver — set the mode to match the TX.</li><li>Two independent carriers per M2T half-rack — confirm <i>which</i> carrier you’re tuning before you dial.</li><li>A1B1 vs B1C1 hardware versions — the assigned MHz must sit inside the unit’s range.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;&middot;&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 15 OF 16</div>
+      <h1>Comtek 216 (BST-25 / PR-216)</h1>
+      <div class="sub">VHF FM IFB / cueing (216–217 MHz) · belt-pack receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-chan">CHANNEL CHART ONLY</span>
+    <span class="pill"><b>Step</b> channel chart — 57 channels</span>
+    <span class="pill"><b>Range</b> 216–217 MHz (FCC Part 95) — 38 narrow + 19 hi-fi companded channels</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Comtek BST-216 Narrow 23</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-chan">CHANNEL CHART ONLY</span></span><span class="gb-txt">No MHz dial at all — coordination assigns a <b>channel from Comtek’s published chart</b> (e.g. “Narrow 23” = 216.5625). Narrow (non-companded) and hi-fi (companded) are <b>separate channel sets</b>; the TX auto-sets deviation / EQ per channel, and the RX must be on the same channel type.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">BST-25/216 (base-station transmitter)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Select the assigned <b>channel</b> with the front-panel controls — the LED window shows the channel <i>and</i> exact frequency.</span></li><li><span class="num">2</span><span class="txt">Confirm the channel <b>type</b> (narrow vs hi-fi companded) matches the assignment; deviation and EQ set themselves per channel.</span></li><li><span class="num">3</span><span class="txt">Switch the <b>DISPLAY off</b> once set — with the display disabled the tuning controls are locked, so the freq can’t walk.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">PR-216 (belt-pack receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Select the <b>same channel number</b> on the PR-216 — it tunes both the standard and hi-fi channel sets.</span></li><li><span class="num">2</span><span class="txt">Use the BST’s <b>400 Hz TONE</b> switch to confirm the link and set listen level, then kill the tone.</span></li><li><span class="num">3</span><span class="txt">Channel stays put once set — no sync, nothing else to match.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">No RF-off standby — the BST radiates once powered. <b>Set the channel before powering near the rig</b> (or before the antenna goes on), then use the display-off lockout to freeze tuning.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">Fixed low power under FCC <b>Part 95</b> (BST-25). The BST 75-216 is the higher-power variant; the M-216 is the belt-pack TX version.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>No sync — match the <b>channel number</b> on TX and RX from the chart. Running 2+ channels on one site needs intermod-checked channel groups (Comtek’s chart / frequency software).</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>VHF 216–217 — completely outside UHF TV coordination; it appears on reports as a <b>channel number</b>, not a free MHz.</li><li>Narrow vs hi-fi companded are different channel sets — a mismatch passes RF but sounds wrong.</li><li>Display disabled = tuning locked. Re-enable the display to change channels.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;&middot;&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 16 OF 16</div>
+      <h1>Sound Devices Astral (A20)</h1>
+      <div class="sub">Digital wideband (SpectraBand) · portable receiver shown</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> fine — any MHz (off the sub-channel grid is OK)</span>
+    <span class="pill"><b>Range</b> SpectraBand 470–1525 MHz (Astral TX & A20-RX down to 169) — region/license-gated</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Astral TX (A20-TX)</span><span class="chip">Astral Mini (A20-Mini)</span><span class="chip">Astral HH (A20-HH)</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">Astral TX / HH (display) · Mini (app)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Astral TX / HH</b>: open the menu → set <b>Country / Tuning Band</b> first (unlocks the legal range), then <b>Frequency</b>.</span></li><li><span class="num">2</span><span class="txt">Dial the assigned <b>MHz</b> and confirm; turn <b>RF on</b>.</span></li><li><span class="num">3</span><span class="txt"><b>Astral Mini</b> (no screen): set frequency from the <b>A20-Remote app</b>, or push it from the receiver / Nexus over <b>NexLink</b>.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">A20-RX (2-ch portable receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>◀</kbd> or <kbd>▶</kbd> to select a channel (single-channel view); press the centre <kbd>ENTER</kbd> to open its menu.</span></li><li><span class="num">2</span><span class="txt">Go to <b>Frequency</b> → <kbd>ENTER</kbd>; <kbd>◀</kbd>/<kbd>▶</kbd> to set the assigned <b>MHz</b>; <kbd>ENTER</kbd> to confirm. (An <b>*</b> just means it’s off the preset sub-channel grid — fine.)</span></li><li><span class="num">3</span><span class="txt">Set the transmitter to the <b>same MHz</b> (on-unit, app, or NexLink). Tip: <b>AutoAssign</b> scans a chosen band and fills both channels.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Use the menu <b>RF Off</b> toggle (or set RF Power = <b>Off</b> on the Mini) so it’s powered but not radiating; set the freq; then <b>RF On</b>.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">A20-TX <b>2 / 10 / 20 / 40 mW</b>; Mini Off / 2 / 10 / 20 / 40; HH up to <b>100 mW</b> (Extra-High must be enabled). Set on the unit, A20-Remote, or the receiver. Tip: raise Long-Range modulation before power.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>No IR sync.</b> TX and RX must share the same <b>frequency + modulation</b>; match by hand, via <b>A20-Remote</b>, or push over <b>NexLink</b> (the screenless Mini must be set this way).</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Set <b>Country / Tuning Band</b> first — available freqs depend on region and any <b>FA license code</b>; restricted bands stay locked.</li><li><b>GainForward</b>: no gain on the transmitter — gain is set at the receiver / mixer.</li><li>Digital & intermod-immune, but keep A20 units ≥ <b>400 kHz</b> apart.</li></ul>
+  </div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section><style>
+.suggest-fab { position:fixed; right:18px; bottom:18px; background:#2f7d52; color:#fff; font:700 10.5pt Arial,sans-serif; padding:10px 16px; border-radius:24px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,.25); z-index:99; }
+.suggest-fab:hover { background:#256641; }
+@media print { .suggest-fab { display:none; } }
+</style>
+<a class="suggest-fab" href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose" target="_blank" rel="noopener">Suggest a change</a>
+</body></html>
