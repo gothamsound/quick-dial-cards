@@ -1,0 +1,28 @@
+name: Request a new system card
+description: Ask for a wireless system that isn't in the deck yet.
+title: "[New system]: "
+labels: ["new-system"]
+body:
+  - type: input
+    id: system
+    attributes:
+      label: Manufacturer and system
+      placeholder: e.g. Audio Ltd A10
+    validations:
+      required: true
+  - type: input
+    id: models
+    attributes:
+      label: Specific TX / portable RX models in use
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Where did this come up?
+      description: Event, coordination report, or client that needs this system covered.
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything unusual about tuning it?
+      description: Group-gated tuning, step-size settings, sync quirks, etc.

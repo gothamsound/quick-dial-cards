@@ -1,0 +1,77 @@
+name: Suggest a change to a card
+description: Propose a correction or improvement to an existing quick-dial card.
+title: "[Card change]: "
+labels: ["suggestion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping keep the Quick-Dial Cards accurate. Changes are reviewed by Gotham Sound before publishing — please cite a source (manual page, firmware note, bench test) where you can.
+  - type: dropdown
+    id: card
+    attributes:
+      label: Which card?
+      options:
+        - Index / How to use
+        - Sennheiser evolution G3 / G4
+        - Sennheiser Digital 6000
+        - Sennheiser 2000 Series
+        - Sennheiser 3000 / 5000 Series
+        - Shure ULX-D
+        - Shure Axient Digital
+        - Shure PSM 1000 (IEM / IFB)
+        - Sony UWP-D
+        - Sony DWX Digital
+        - Wisycom MTP / MCR
+        - Lectrosonics Digital Hybrid
+        - Lectrosonics L-Series wideband
+        - Lectrosonics IFB (IFBlue)
+        - Lectrosonics Duet (M2T / M2Ra)
+        - Comtek 216 (BST-25 / PR-216)
+        - Sound Devices Astral (A20)
+        - Other / general
+    validations:
+      required: true
+  - type: dropdown
+    id: section
+    attributes:
+      label: Which part of the card?
+      options:
+        - TX (transmitter) procedure
+        - RX (receiver) procedure
+        - RF power settings
+        - Safe power-on method
+        - Watch-outs
+        - Badge / tuning-spacing classification
+        - Linking / sync notes
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What does the card say now?
+      description: Quote the current text or setting as printed.
+    validations:
+      required: true
+  - type: textarea
+    id: proposed
+    attributes:
+      label: What should it say instead?
+      description: Be as specific as possible — exact menu path, exact value.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source / justification
+      description: Manual section, firmware release note, bench test, field experience — anything that lets us verify.
+    validations:
+      required: true
+  - type: checkboxes
+    id: verified
+    attributes:
+      label: Verification
+      options:
+        - label: I have verified this on the actual hardware
+        - label: This is firmware-version dependent (please note versions above)
