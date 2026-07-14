@@ -28,13 +28,15 @@ A GitHub account is required (that's the point — every suggestion is attributa
 ## Repository layout
 
 ```
-index.html                      — the full card deck (also the published site)
+index.html                      — fast-lookup app (the published site)
+print.html                      — the full print-layout card deck
+tools/build_app.py              — generates index.html from print.html
 quick-dial-cards.pdf            — print-ready PDF (Letter)
 quick-dial-cards-editable.xlsx  — editable workbook, one tab per card
 assets/                         — logo and static assets
 ```
 
-All three deliverables are kept in sync — the HTML is the canonical source.
+All deliverables are kept in sync — print.html is the canonical source; the app is generated from it verbatim by tools/build_app.py.
 
 **Downloads:** [PDF](quick-dial-cards.pdf) · [Editable XLSX](quick-dial-cards-editable.xlsx)
 
