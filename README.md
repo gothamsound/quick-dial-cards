@@ -15,6 +15,12 @@ Spot an error, an outdated procedure, or a missing system? Open an issue:
 
 A GitHub account is required (that's the point — every suggestion is attributable). Don't have one (you really should)? [Email it here](mailto:peters@gothamsound.com?subject=quickdialchange) instead. Suggestions are reviewed and verified by Gotham Sound before publishing; please cite a source (manual, firmware note, bench test) so we can verify quickly.
 
+## Community & credit
+
+This deck is a community effort: corrections come from working coordinators and crews, are verified against the manufacturer's documentation, and each card carries a **Sources** row linking the manuals used. Accepted suggestions are credited here (with your GitHub username or a name you choose — or anonymously if you prefer; say so in the issue).
+
+**Contributors:** *(your name here — send in the first credited fix!)*
+
 ## How the deck is classified
 
 | Badge | Meaning |

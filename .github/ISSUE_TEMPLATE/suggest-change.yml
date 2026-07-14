@@ -68,6 +68,21 @@ body:
       description: Manual section, firmware release note, bench test, field experience — anything that lets us verify.
     validations:
       required: true
+  - type: dropdown
+    id: credit
+    attributes:
+      label: Credit
+      description: Accepted suggestions are credited in the README and release notes.
+      options:
+        - Credit my GitHub username
+        - Credit the name I give below
+        - No credit, thanks
+    validations:
+      required: true
+  - type: input
+    id: credit-name
+    attributes:
+      label: Name for credit (only if different from your GitHub username)
   - type: checkboxes
     id: verified
     attributes:

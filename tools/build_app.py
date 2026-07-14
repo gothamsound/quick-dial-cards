@@ -39,7 +39,7 @@ ISSUE = "https://github.com/gothamsound/quick-dial-cards/issues/new"
 sections = []
 for c in cards:
     fix = f"{ISSUE}?template=suggest-change.yml&card={urllib.parse.quote(c['title'])}&title={urllib.parse.quote('[Card change]: ' + c['title'])}"
-    mailbody = urllib.parse.quote(f"Card: {c['title']}\n\nWhat it says now:\n\nWhat it should say:\n\nSource:\n")
+    mailbody = urllib.parse.quote(f"Card: {c['title']}\n\nWhat it says now:\n\nWhat it should say:\n\nSource:\n\nCredit me as (or say no thanks):\n")
     sections.append(f'''<section class="card" id="{c['slug']}" data-brand="{html.escape(c['brand'])}" data-model="{html.escape(c['model'])}" data-title="{html.escape(c['title'])}" data-badgecls="{c['badgecls']}" data-badgetxt="{html.escape(c['badgetxt'])}" hidden>
 <div class="cardhead"><div class="ch-brand">{html.escape(c['brand'])}</div><h2>{html.escape(c['model'])}</h2><div class="ch-sub">{c['sub']}</div></div>
 {c['body']}
@@ -144,6 +144,8 @@ kbd { font-family:'DejaVu Sans Mono',Menlo,monospace; font-size:.86rem; font-wei
 .w-t { font-size:.74rem; font-weight:800; letter-spacing:.08em; color:#9a6516; }
 .watch ul { margin:6px 0 0; padding-left:18px; }
 .watch li { font-size:.95rem; line-height:1.45; margin-bottom:5px; }
+.sources { font-size:.84rem; color:var(--mut); margin-top:14px; line-height:1.6; border-top:1px dashed var(--line); padding-top:9px; }
+.sources .s-t { font-weight:800; letter-spacing:.08em; font-size:.68rem; color:var(--oli); margin-right:6px; }
 .cardfoot { margin-top:18px; border-top:1px solid var(--line); padding-top:12px; font-size:.9rem; }
 .suggest-fab { position:fixed; right:16px; bottom:16px; background:var(--grn); color:#fff; font-weight:700; font-size:.92rem; padding:11px 17px; border-radius:26px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,.25); z-index:60; }
 .suggest-fab:hover { background:var(--grn-d); }
@@ -161,11 +163,12 @@ body.in-card .suggest-fab { display:none; }
   <div id="lastused"></div>
   <h1 class="bigask">Pick the brand written on your transmitter</h1>
   <p class="reassure">Have your assigned frequency ready (e.g. <b>541.200&nbsp;MHz</b>) — the card walks you through dialing it, step by step.</p>
+  <p class="reassure" style="font-size:.88rem">This deck is a <b>community effort</b> — corrections come in from working coordinators and crews and are verified against the manufacturer manuals before publishing.</p>
   <div id="brands"></div>
   <div id="models" hidden></div>
   <div id="results" hidden></div>
   <p class="homefoot">Working from paper? <a href="print.html">Printable deck</a> · <a href="quick-dial-cards.pdf">PDF</a> · <a href="quick-dial-cards-editable.xlsx">Editable XLSX</a><br>
-  Maintained by <a href="https://gothamsound.com">Gotham Sound</a>. Spot an error? <a href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose">Suggest a change</a> — or if you don't have a GitHub account (you really should), <a href="mailto:peters@gothamsound.com?subject=quickdialchange">email it here</a>.</p>
+  Maintained by <a href="https://gothamsound.com">Gotham Sound</a>. Spot an error? <a href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose">Suggest a change</a> — or if you don't have a GitHub account (you really should), <a href="mailto:peters@gothamsound.com?subject=quickdialchange">email it here</a>. Contributors are credited in the README — tell us if you&rsquo;d like that (or prefer not).</p>
 </div>
 <div id="cardwrap" hidden>
   <div class="cardbar">
