@@ -13,7 +13,7 @@ Spot an error, an outdated procedure, or a missing system? Open an issue:
 - [**Suggest a change to a card**](../../issues/new?template=suggest-change.yml) — corrections to existing cards
 - [**Request a new system card**](../../issues/new?template=new-system.yml) — systems not yet covered
 
-A GitHub account is required (that's the point — every suggestion is attributable). Suggestions are reviewed and verified by Gotham Sound before publishing; please cite a source (manual, firmware note, bench test) so we can verify quickly.
+A GitHub account is required (that's the point — every suggestion is attributable). Don't have one (you really should)? [Email it here](mailto:peters@gothamsound.com?subject=quickdialchange) instead. Suggestions are reviewed and verified by Gotham Sound before publishing; please cite a source (manual, firmware note, bench test) so we can verify quickly.
 
 ## How the deck is classified
 

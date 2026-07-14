@@ -39,10 +39,11 @@ ISSUE = "https://github.com/gothamsound/quick-dial-cards/issues/new"
 sections = []
 for c in cards:
     fix = f"{ISSUE}?template=suggest-change.yml&card={urllib.parse.quote(c['title'])}&title={urllib.parse.quote('[Card change]: ' + c['title'])}"
+    mailbody = urllib.parse.quote(f"Card: {c['title']}\n\nWhat it says now:\n\nWhat it should say:\n\nSource:\n")
     sections.append(f'''<section class="card" id="{c['slug']}" data-brand="{html.escape(c['brand'])}" data-model="{html.escape(c['model'])}" data-title="{html.escape(c['title'])}" data-badgecls="{c['badgecls']}" data-badgetxt="{html.escape(c['badgetxt'])}" hidden>
 <div class="cardhead"><div class="ch-brand">{html.escape(c['brand'])}</div><h2>{html.escape(c['model'])}</h2><div class="ch-sub">{c['sub']}</div></div>
 {c['body']}
-<div class="cardfoot"><a href="{fix}" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a></div>
+<div class="cardfoot"><a href="{fix}" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body={mailbody}">Email it here</a>.</div>
 </section>''')
 
 page = r'''<!DOCTYPE html>
@@ -164,7 +165,7 @@ body.in-card .suggest-fab { display:none; }
   <div id="models" hidden></div>
   <div id="results" hidden></div>
   <p class="homefoot">Working from paper? <a href="print.html">Printable deck</a> · <a href="quick-dial-cards.pdf">PDF</a> · <a href="quick-dial-cards-editable.xlsx">Editable XLSX</a><br>
-  Maintained by <a href="https://gothamsound.com">Gotham Sound</a>. Spot an error? <a href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose">Suggest a change</a>.</p>
+  Maintained by <a href="https://gothamsound.com">Gotham Sound</a>. Spot an error? <a href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose">Suggest a change</a> — or if you don't have a GitHub account (you really should), <a href="mailto:peters@gothamsound.com?subject=quickdialchange">email it here</a>.</p>
 </div>
 <div id="cardwrap" hidden>
   <div class="cardbar">
