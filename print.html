@@ -94,8 +94,11 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 .sheet:first-of-type .logo { width:118px; }
 .sheet:first-of-type .how { font-size:8.7pt; line-height:1.32; padding:6px 10px; margin:6px 0 6px; }
 .sheet:first-of-type .legend { gap:1px; margin-bottom:6px; }
-.sheet:first-of-type .router td { padding:2.1px 8px; }
-.sheet:first-of-type .genrule { font-size:8.1pt; line-height:1.32; padding:6px 10px; margin-top:6px; }
+.sheet:first-of-type .router td { padding:1.4px 7px; font-size:8pt; }
+.sheet:first-of-type .router .tag { font-size:6.8pt; padding:2px 6px; min-width:150px; }
+.sheet:first-of-type table.router th { padding:3.5px 7px; font-size:7.6pt; }
+.sheet:first-of-type .genrule { font-size:7.8pt; line-height:1.28; padding:5px 9px; margin-top:5px; }
+.sheet:first-of-type .how { display:none; }
 </style></head>
 <body>
 <section class="sheet">
@@ -141,7 +144,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
   </div>
 
   <footer class="foot">
-    <span>16 cards · transmitter + portable receiver each</span>
+    <span>22 cards · transmitter + portable receiver each (card 22 = software)</span>
     <span>Prepared by Gotham Sound</span>
   </footer>
 </section>
@@ -1243,32 +1246,30 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
     <span class="pill"><b>Range</b> applies only to the WWB calculator on your laptop — it changes nothing on any transmitter</span>
   </div>
 
-  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">“WWB rejects our assigned freqs”</span><span class="chip">Compatibility profile</span><span class="chip">3TO / spacing warnings</span></div>
-  <div class="groupbar"><span class="gb-tag"><span class="tag na">SOFTWARE — CALC ONLY</span></span><span class="gb-txt">The scene: event coordination hands you exact frequencies, you type them into WWB, and WWB flags them (intermod / “3TO” spacing warnings). <b>WWB isn’t overruling the event plan — it’s re-running its own intermod math with conservative default margins.</b> The site-wide coordination already did that work across every rig on site. Relax the <b>compatibility profile</b> so WWB accepts what you were given — do <b>not</b> calculate new frequencies.</span></div>
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">“WWB rejects our assigned freqs”</span><span class="chip">Compatibility profile</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag na">SOFTWARE — CALC ONLY</span></span><span class="gb-txt">Coordination hands you exact frequencies; WWB flags them (intermod / “3TO” warnings). <b>WWB isn’t overruling the event plan — it’s re-running its own intermod math with conservative margins</b> that the site-wide coordination already handled. Relax the <b>compatibility profile</b> so WWB accepts what you were given — do <b>not</b> calculate new frequencies.</span></div>
 
   <div class="procs">
     <div class="proc tx">
       <div class="proc-h"><span class="proc-k">WWB 6</span>
         <span class="proc-m">WWB 6</span></div>
-      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Frequency Coordination</b> tab → click the device-type <b>group header</b>. The header text shows the active profile (“Standard” / “Robust” / “More Frequencies”).</span></li><li><span class="num">2</span><span class="txt">Right sidebar → <b>Compatibility</b> tab → <b>Compatibility Profile</b> drop-down → <b>More Frequencies</b> (try <b>Standard</b> first if you only need a little slack).</span></li><li><span class="num">3</span><span class="txt">Re-enter / keep the assigned freqs and hit <kbd>Calculate</kbd> — the header text updates and the warnings should clear. (The underlying spacing numbers live in <b>Tools ▸ Equipment Profiles ▸ Filtering &amp; Intermods</b>.)</span></li></ol>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Frequency Coordination</b> tab → click the device-type <b>group header</b> (its text shows the active profile).</span></li><li><span class="num">2</span><span class="txt">Right sidebar → <b>Compatibility</b> tab → <b>Compatibility Profile</b> drop-down → <b>More Frequencies</b> (try <b>Standard</b> first if you only need a little slack).</span></li><li><span class="num">3</span><span class="txt">Keep the assigned freqs; <kbd>Calculate</kbd> — the warnings should clear. (Spacing numbers live in <b>Tools ▸ Equipment Profiles</b>.)</span></li></ol>
     </div>
     <div class="proc rx">
       <div class="proc-h"><span class="proc-k">WWB 7</span>
         <span class="proc-m">WWB 7</span></div>
-      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Frequency coordination</b> workspace → click the device <b>header</b> (dark grey bar); <kbd>Ctrl</kbd>-click to select several.</span></li><li><span class="num">2</span><span class="txt"><b>Compatibility</b> tab → profile drop-down → <b>More frequencies</b> (or Standard). Fine control: <b>Channel spacing</b> / <b>Intermod spacing</b> (2- and 3-transmitter) sliders; <kbd>Revert</kbd> undoes, <kbd>Save</kbd> stores a modified profile (shows a *).</span></li><li><span class="num">3</span><span class="txt">Click <kbd>Calculate</kbd>. Default for every future device: <b>Preferences ▸ Coordination ▸ Compatibility</b> → double-click the model’s <b>Coordination Preference</b>.</span></li></ol>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Frequency coordination</b> workspace → click the device <b>header</b> (dark grey bar); <kbd>Ctrl</kbd>-click to select several.</span></li><li><span class="num">2</span><span class="txt"><b>Compatibility</b> tab → profile drop-down → <b>More frequencies</b> (or Standard). Fine sliders: <b>Channel / Intermod spacing</b> (2- &amp; 3-TX); <kbd>Revert</kbd> undoes, <kbd>Save</kbd> keeps a modified profile (*).</span></li><li><span class="num">3</span><span class="txt"><kbd>Calculate</kbd>. Global default: <b>Preferences ▸ Coordination ▸ Compatibility</b> → double-click the model’s <b>Coordination Preference</b>.</span></li></ol>
     </div>
   </div>
 
   <div class="rfbar">
-    <div class="rf-row"><span class="rf-k rf-warn">DON’T RECALC</span><span class="rf-v">Type the coordinator’s frequencies <b>exactly</b> (double-click the Frequency column in Inventory and type). Relaxing the profile is only to make WWB <i>accept</i> them — <b>don’t press Calculate to generate new frequencies</b> without checking with coordination first.</span></div>
+    <div class="rf-row"><span class="rf-k rf-warn">DON’T RECALC</span><span class="rf-v">Type the coordinator’s frequencies <b>exactly</b> (double-click the Inventory Frequency column). Relaxing the profile only makes WWB <i>accept</i> them — <b>don’t generate new frequencies</b> without asking coordination.</span></div>
     <div class="rf-row"><span class="rf-k">TRADE-OFF</span><span class="rf-v"><b>More Frequencies = tighter spacings</b>: less margin against intermod products and short TX-to-RX distances. Fine when the site-wide coordination owns the plan; <b>not</b> a free win when you’re self-coordinating in isolation.</span></div>
   </div>
 
-  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Deploying from WWB: linked Axient pairs update instantly over ShowLink; UHF-R / ULX-D / PSM1000 update the rack, then <b>IR-sync</b> the portables; everything else is tuned by hand (see that system’s card).</span></div>
-
   <div class="watch">
     <span class="w-t">WATCH OUT</span>
-    <ul><li>“3TO”-style warnings are WWB’s own 2- and 3-transmitter third-order intermod spacing rules — a margin policy, not a verdict on the event plan.</li><li>Set the profile <b>per device type</b> — relax only the types you were handed frequencies for.</li><li>If WWB still refuses one specific assigned frequency, don’t nudge it to a nearby number — <b>call coordination</b>; the digits are load-bearing.</li><li>Changing the profile changes calculations only; nothing reaches hardware until you deploy.</li></ul>
+    <ul><li>“3TO”-style warnings are WWB’s own 2- and 3-transmitter third-order intermod spacing rules — a margin policy, not a verdict on the event plan.</li><li>Set the profile <b>per device type</b> — relax only the types you were handed frequencies for.</li><li>If WWB still refuses one specific assigned frequency, don’t nudge it to a nearby number — <b>call coordination</b>; the digits are load-bearing.</li></ul>
   </div>
 
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://content-files.shure.com/Pubs/WWB/en-US/en-US/adjust-compatibility-settings.html">WWB help — Adjust Compatibility Settings</a> · <a href="https://www.shure.com/en-US/insights/shure-wireless-workbench-6-compatibility-profiles">WWB6 compatibility profiles (Shure)</a> · <a href="https://content-files.shure.com/Pubs/WWB/en-US/en-US/specify-a-frequency-for-a-channel.html">WWB help — Specify a Frequency</a></div>
