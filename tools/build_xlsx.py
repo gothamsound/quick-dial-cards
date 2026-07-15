@@ -37,7 +37,7 @@ for sheet in src.split('<section class="sheet">')[1:]:
         watch=[txt(x) for x in re.findall(r'<div class="watch">.*?<ul>(.*?)</ul>', sheet, re.S)[0].split('</li>') if txt(x)] if '<div class="watch">' in sheet else [],
         sources=re.findall(r'<div class="sources">.*?</div>', sheet, re.S) and re.findall(r'<a href="([^"]+)">([^<]+)</a>', re.search(r'<div class="sources">(.*?)</div>', sheet, re.S).group(1)) or [],
     ))
-assert len(cards)==16
+assert len(cards)==21
 
 TABS = {'Sennheiser evolution G3 / G4':'Sennheiser ew G3-G4','Sennheiser Digital 6000':'Sennheiser D6000',
  'Sennheiser 2000 Series':'Sennheiser 2000','Sennheiser 3000 / 5000 Series':'Sennheiser 3000-5000',
@@ -45,7 +45,9 @@ TABS = {'Sennheiser evolution G3 / G4':'Sennheiser ew G3-G4','Sennheiser Digital
  'Sony UWP-D':'Sony UWP-D','Sony DWX Digital':'Sony DWX','Wisycom MTP / MCR':'Wisycom',
  'Lectrosonics Digital Hybrid':'Lectrosonics','Lectrosonics L-Series wideband':'Lectrosonics L-Series',
  'Lectrosonics IFB (IFBlue)':'Lectrosonics IFB','Lectrosonics Duet (M2T / M2Ra)':'Lectrosonics Duet',
- 'Comtek 216 (BST-25 / PR-216)':'Comtek 216','Sound Devices Astral (A20)':'Sound Devices Astral'}
+ 'Comtek 216 (BST-25 / PR-216)':'Comtek 216','Sound Devices Astral (A20)':'Sound Devices Astral',
+ 'Sennheiser EW-DX':'Sennheiser EW-DX','Shure SLX-D':'Shure SLX-D','Shure UHF-R':'Shure UHF-R',
+ 'Lectrosonics D Squared (DBSM / DSQD)':'Lectrosonics D Squared','Zaxcom (ZMT4.5 / URX100)':'Zaxcom'}
 
 INK='FF16181D'; OLIVE='FF6A6F33'; MUT='FF4A4F57'; FILL=PatternFill('solid', fgColor='FFF6F6F1')
 def style(ws,cell,sz=10,b=False,color=INK,wrap=True,fill=False):

@@ -11,7 +11,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 src = (ROOT / "print.html").read_text()
 
 BRANDS = ["Sennheiser", "Shure", "Sony", "Wisycom", "Lectrosonics",
-          "Comtek", "Sound Devices"]
+          "Comtek", "Sound Devices", "Zaxcom"]
 
 def slugify(t):
     t = re.sub(r"&[a-z]+;", " ", t)
@@ -33,7 +33,7 @@ for sheet in src.split('<section class="sheet">')[1:]:
                       sub=sub, body=body,
                       badgecls=badge.group(1), badgetxt=badge.group(2)))
 
-assert len(cards) == 16, f"expected 16 cards, got {len(cards)}"
+assert len(cards) == 21, f"expected 16 cards, got {len(cards)}"
 
 ISSUE = "https://github.com/gothamsound/quick-dial-cards/issues/new"
 sections = []

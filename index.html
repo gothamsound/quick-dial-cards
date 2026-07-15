@@ -170,6 +170,45 @@ body.in-card .suggest-fab { display:none; }
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://docs.cloud.sennheiser.com/en-us/ew-g4/ew-g4_bedienungsanleitung_12_2025_en.pdf">ew G4 system manual</a> · <a href="https://web.archive.org/web/2025/https://assets.sennheiser.com/global-downloads/file/10828/SK_500_G3_Manual_12_2016_EN.pdf">SK 500 G3 manual</a> · <a href="https://web.archive.org/web/2021/https://assets.sennheiser.com/global-downloads/file/6358/EK_100_G3_Manual_12_2016_EN.pdf">EK 100 G3 manual</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Sennheiser%20evolution%20G3%20/%20G4&title=%5BCard%20change%5D%3A%20Sennheiser%20evolution%20G3%20/%20G4" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Sennheiser%20evolution%20G3%20/%20G4%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
+<section class="card" id="sennheiser-ew-dx" data-brand="Sennheiser" data-model="EW-DX" data-title="Sennheiser EW-DX" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
+<div class="cardhead"><div class="ch-brand">Sennheiser</div><h2>EW-DX</h2><div class="ch-sub">Digital UHF · no portable RX in-series — EW-DP EK is the camera option</div></div>
+<div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> fine (MHz + kHz entry; factory presets sit on a 600 kHz grid)</span>
+    <span class="pill"><b>Range</b> US: Q1-9 470.2–550 · R1-9 520–607.8 · V5-7 941.7–959.65 (licensed STL)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sennheiser EW-DX Q1-9</span><span class="chip">Sennheiser EW-DX R1-9</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SK / SKM(-S) (bodypack / handheld)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>SET</kbd> to open the menu → <b>Frequency</b>; <kbd>UP</kbd>/<kbd>DOWN</kbd> sets the MHz range → <kbd>SET</kbd> → <kbd>UP</kbd>/<kbd>DOWN</kbd> sets the kHz → <kbd>SET</kbd> to save.</span></li><li><span class="num">2</span><span class="txt">Or sync from the receiver: press <kbd>CH 1</kbd>/<kbd>CH 2</kbd> on the EM 2 → <kbd>SYNC</kbd> on the receiver → <b>short-press</b> <kbd>SYNC</kbd> on the TX (<b>Bluetooth LE — no IR</b>).</span></li><li><span class="num">3</span><span class="txt">Keep that TX press <b>short</b> — holding <kbd>SYNC</kbd> &gt; 2 s enters firmware-update mode and cancels the sync.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">EW-DP EK (camera receiver, cross-compatible)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>UP</kbd>/<kbd>DOWN</kbd>/<kbd>SET</kbd>/<kbd>ESC</kbd> → <b>FREQUENCY</b> (or AUTO SCAN / CHANNEL).</span></li><li><span class="num">2</span><span class="txt">Set the assigned <b>MHz</b>; <kbd>SET</kbd> to save.</span></li><li><span class="num">3</span><span class="txt">Must be the same <b>frequency-range variant</b> as the TX; EW-DX extras (encryption, LD) drop off on EW-DP.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">No RF-mute boot combo. <b>SK / SKM-S</b>: set the mute-switch function to <b>RF Mute</b> (TX menu: <b>Mute Button</b>; or RX: Ch → Mute Mode) and slide to mute <i>before</i> power-on. Plain SKM has no mute switch.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">Fixed <b>10 mW ERP</b> (12 mW in Y1-3) — there is <b>no RF-power menu</b>.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Sync runs over <b>Bluetooth LE</b> from the receiver — receiver values overwrite the TX. Manual TX entry and the Smart Assist app also work.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Enabling <b>AES-256</b> (System → Link Encryption) requires re-syncing every TX.</li><li><b>Link Density</b> mode needs a receiver restart; presets shift to a 300 kHz grid.</li><li>TX and RX must share the frequency-range variant (Q1-9 vs R1-9…).</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://www.sennheiser.com/globalassets/digizuite/40783-en-instruction-manual-and-frequently-asked-questions---evolution-wireless-digital-ew-d--ew-dx--ew-dp-pdf.pdf">EW-D/DX/DP combined manual</a> · <a href="https://docs.cloud.sennheiser.com/en-us/ew-d/ew-d/manual.html">EW-DX online manual</a> · <a href="https://docs.cloud.sennheiser.com/en-us/ew-d/ew-d/productinfo-freq-ranges.html">Frequency ranges</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Sennheiser%20EW-DX&title=%5BCard%20change%5D%3A%20Sennheiser%20EW-DX" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Sennheiser%20EW-DX%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
 <section class="card" id="sennheiser-digital-6000" data-brand="Sennheiser" data-model="Digital 6000" data-title="Sennheiser Digital 6000" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
 <div class="cardhead"><div class="ch-brand">Sennheiser</div><h2>Digital 6000</h2><div class="ch-sub">Digital UHF · portable (camera) receiver shown</div></div>
 <div class="meta">
@@ -287,6 +326,45 @@ body.in-card .suggest-fab { display:none; }
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://web.archive.org/web/2024/https://assets.sennheiser.com/global-downloads/file/6846/SK_5212-II_Manual_11_2010_EN.pdf">SK 5212-II manual</a> · <a href="https://web.archive.org/web/2021/https://assets.sennheiser.com/global-downloads/file/12024/EK_3241_532026_0209_INT_US.pdf">EK 3241 manual (US)</a> · <a href="https://web.archive.org/web/2021/https://assets.sennheiser.com/global-downloads/file/10500/EM_3732-II_Manual_10_2019_EN.pdf">EM 3732-II manual</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Sennheiser%203000%20/%205000%20Series&title=%5BCard%20change%5D%3A%20Sennheiser%203000%20/%205000%20Series" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Sennheiser%203000%20/%205000%20Series%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
+<section class="card" id="shure-slx-d" data-brand="Shure" data-model="SLX-D" data-title="Shure SLX-D" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
+<div class="cardhead"><div class="ch-brand">Shure</div><h2>SLX-D</h2><div class="ch-sub">Digital UHF · SLXD5 is the portable receiver</div></div>
+<div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz (JB band 125 kHz)</span>
+    <span class="pill"><b>Range</b> US: G58 470–514 · H55 514–558 · J52 558–602 + 614–616 · wideband “+” models G57 470–608</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Shure SLXD4 G58</span><span class="chip">Shure SLXD4Q+ G57</span><span class="chip">Shure SLXD5</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">SLXD1 / SLXD2 (bodypack / handheld)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Transmitters have <b>no frequency menu</b> (menu = RF power, offset, locks) — the frequency comes from the receiver.</span></li><li><span class="num">2</span><span class="txt">Tune the receiver (right), align the <b>IR ports</b>, press the receiver’s <kbd>sync</kbd> button → the TX takes the freq.</span></li><li><span class="num">3</span><span class="txt"><b>No RF-mute boot exists</b> on SLX-D — power packs up away from the rig, sync, then move in.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">SLXD5 (portable slot/bag receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>Enter</kbd> from home → <b>Frequency</b> → <b>Manual Setup</b> (or Channel / Group Scan).</span></li><li><span class="num">2</span><span class="txt"><kbd>▲▼</kbd> arrows to set G / C or the exact <b>MHz</b> (25 kHz); <kbd>Enter</kbd> to apply.</span></li><li><span class="num">3</span><span class="txt">Align IR ports with the TX and press <kbd>Sync</kbd>.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Nothing to hold at boot — this family has <b>no RF-mute power-on</b> (unlike ULX-D). Set the receiver first, sync at a distance, then approach.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">TX menu <b>RF Power: 1 / 10 mW</b> (SLXD3 plug-on: 30 mW); or push from the SLXD5 (<b>TX ▸ RF Power</b>, Low 1 / High 10) via IR sync.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>SLXD4 path: push the <kbd>control knob</kbd> → <b>Frequency Setup ▸ Manual Frequency Setup</b> → set G / C / MHz → <b>Apply</b>. “+” receivers pair with legacy TXs when <b>RF Band</b> matches (Device Configuration ▸ RF ▸ RF Band).</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Legacy SLX-D has <b>no encryption</b>; SLX-D+ adds AES-256.</li><li>G65 and L57 are <b>not US bands</b> — US stock is G58 / H55 / J52 (+ G57 wideband).</li><li>Keep all receivers in one band on the same group.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://pubs.shure.com/guide/SLXD">SLX-D user guide</a> · <a href="https://pubs.shure.com/guide/SLXD4Qplus">SLXD4Q+ user guide</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Shure%20SLX-D&title=%5BCard%20change%5D%3A%20Shure%20SLX-D" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Shure%20SLX-D%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
 <section class="card" id="shure-ulx-d" data-brand="Shure" data-model="ULX-D" data-title="Shure ULX-D" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
 <div class="cardhead"><div class="ch-brand">Shure</div><h2>ULX-D</h2><div class="ch-sub">Digital UHF · (no portable receiver — half-rack ULXD4 shown)</div></div>
 <div class="meta">
@@ -364,6 +442,45 @@ body.in-card .suggest-fab { display:none; }
 
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://pubs.shure.com/view/guide/ADX1/en-US.pdf">ADX1 guide (Safe Start, tuning)</a> · <a href="https://pubs.shure.com/view/guide/ADX5D/en-US.pdf">ADX5D guide (sync, bands)</a> · <a href="https://content-files.shure.com/Pubs/AxientDigital/Axient_Digital_Frequency_Chart.pdf">AD frequency chart</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Shure%20Axient%20Digital&title=%5BCard%20change%5D%3A%20Shure%20Axient%20Digital" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Shure%20Axient%20Digital%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
+<section class="card" id="shure-uhf-r" data-brand="Shure" data-model="UHF-R" data-title="Shure UHF-R" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
+<div class="cardhead"><div class="ch-brand">Shure</div><h2>UHF-R</h2><div class="ch-sub">Analog UHF (legacy — still everywhere) · UR1/UR2 TX · UR4D rack RX</div></div>
+<div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 25 kHz — strict grid, no fine offsets</span>
+    <span class="pill"><b>Range</b> US: G1 470–530 · H4 518–578 · J5 578–638 · L3 638–698 — <b>614+ MHz is post-repack illegal in the US</b></span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Shure UR4D H4</span><span class="chip">Shure UHF-R J5</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">UR1 / UR2 (bodypack / handheld)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Press <kbd>enter</kbd> from the main screen → <b>Group (G) / Channel (Ch)</b> or <b>Frequency</b>; <kbd>▲▼</kbd> in 25 kHz steps; <kbd>enter</kbd> to save. (UR2: pull the battery cover off the handle to reach the keys.)</span></li><li><span class="num">2</span><span class="txt">Or IR-sync: open the TX battery cover to expose the IR port; on the receiver select <b>Sync ▸ sync</b>.</span></li><li><span class="num">3</span><span class="txt">A <b>frequency-locked</b> TX silently ignores the synced frequency — unlock first (hold <kbd>exit</kbd> + tap <kbd>▲</kbd> toggles Frequency Lock).</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">RECEIVER (RACK)</span>
+        <span class="proc-m">UR4D / UR4S (rack receiver — no portable in-series)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Radio</b> menu: push the <kbd>control wheel</kbd> to the Group/Channel or frequency value; turn to change; press the flashing <kbd>ENTER</kbd>.</span></li><li><span class="num">2</span><span class="txt">Or <b>Radio ▸ Scan</b> → Chan Scan / Group Scan.</span></li><li><span class="num">3</span><span class="txt">Then IR-sync down to the TX (step 2, left).</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v"><b>RF Safety Mode</b>: hold the <kbd>exit</kbd> key <b>while switching the TX on</b> → LCD flashes; it will not radiate while you set group/channel. Power-cycle to exit.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">Hold <kbd>exit</kbd> + tap <kbd>▼</kbd> on the TX. UR2: <b>10 / 50 mW</b>; UR1: <b>10 / 100 mW</b> (G1/H4/J5; L3 = 10/50).</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>Sync ▸ Setup</b> can also push gain, RF power and locks with the frequency — check what it’s configured to send before syncing someone else’s pack.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Analog FM on a strict 25 kHz grid — a .0125 offset doesn’t exist here.</li><li>Upper J5 and all of L3 (614–698 MHz) are illegal post-repack — check the band label before accepting the unit.</li><li>Tonekey squelch (<b>Radio ▸ Squelch ▸ Tonekey</b>) should stay On.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://content-files.shure.com/FileRepository/27a20023-4-1-uhf-r.pdf">UHF-R user guide</a> · <a href="https://content-files.shure.com/Pubs/UHF/UHF-R_Spec_Sheet.pdf">UHF-R spec sheet</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Shure%20UHF-R&title=%5BCard%20change%5D%3A%20Shure%20UHF-R" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Shure%20UHF-R%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
 <section class="card" id="shure-psm-1000-iem-ifb" data-brand="Shure" data-model="PSM 1000 (IEM / IFB)" data-title="Shure PSM 1000 (IEM / IFB)" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
 <div class="cardhead"><div class="ch-brand">Shure</div><h2>PSM 1000 (IEM / IFB)</h2><div class="ch-sub">Analog FM (networked control) · the bodypack IS the portable receiver</div></div>
@@ -535,7 +652,7 @@ body.in-card .suggest-fab { display:none; }
   <div class="procs">
     <div class="proc tx">
       <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
-        <span class="proc-m">SMV / SMQV (and SMa, SSM, LT…)</span></div>
+        <span class="proc-m">SMV / SMQV (and SMa, SSM, HMa plug-on…)</span></div>
       <ol class="steps"><li><span class="num">1</span><span class="txt">From home, press and <b>HOLD</b> <kbd>FREQ</kbd>; while holding, <kbd>UP</kbd>/<kbd>DOWN</kbd> moves the freq in 100 kHz steps. Release to set.</span></li><li><span class="num">2</span><span class="txt">Press <kbd>FREQ</kbd> again to toggle the display between <b>MHz</b> and the 2-digit <b>hex</b> channel.</span></li><li><span class="num">3</span><span class="txt">To set with RF off, boot Standby: with power OFF, briefly press <kbd>AUDIO</kbd>+<kbd>FREQ</kbd> together — boots showing <b>“rf OFF”</b>.</span></li></ol>
     </div>
     <div class="proc rx">
@@ -574,7 +691,7 @@ body.in-card .suggest-fab { display:none; }
   <div class="procs">
     <div class="proc tx">
       <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
-        <span class="proc-m">LT / LMb (bodypack transmitters)</span></div>
+        <span class="proc-m">LT / LMb / SMWB / SMDWB (wideband bodypacks)</span></div>
       <ol class="steps"><li><span class="num">1</span><span class="txt">Power on in <b>Standby Mode</b>: short-press the power button, releasing <i>before the countdown reaches 3</i> — RF stays off (“Standby” in the Main Window) while you tune.</span></li><li><span class="num">2</span><span class="txt">Menu → <b>StepSize</b>: set <b>25 kHz</b>. Then <b>Frequency</b>: <kbd>UP</kbd>/<kbd>DOWN</kbd> to the assigned <b>MHz</b>.</span></li><li><span class="num">3</span><span class="txt"><b>Rf On</b> from the Main / Power menu once confirmed — or IR-sync from the LR first, then enable RF.</span></li></ol>
     </div>
     <div class="proc rx">
@@ -593,7 +710,7 @@ body.in-card .suggest-fab { display:none; }
 
   <div class="watch">
     <span class="w-t">WATCH OUT</span>
-    <ul><li>Reports list these as <b>“Lectrosonics 3 Block A1 / B1”</b> — the wideband LT / LR family, not the single-block SMV card.</li><li>Step Size left at 100 kHz silently hides .025 / .050 / .075 assignments — set <b>25 kHz</b> on both TX and RX.</li><li>Compat mode (Digital Hybrid / 100 / 200 / IFB / Mode 3…) must match the receiver or no audio.</li></ul>
+    <ul><li>Reports list these as <b>“Lectrosonics 3 Block A1 / B1”</b> — the wideband LT / LR / SMWB family (SMWB/SMDWB tune the same way; “Nu Hybrid” on a report = these in Digital Hybrid compat), not the single-block SMV card.</li><li>Step Size left at 100 kHz silently hides .025 / .050 / .075 assignments — set <b>25 kHz</b> on both TX and RX.</li><li>Compat mode (Digital Hybrid / 100 / 200 / IFB / Mode 3…) must match the receiver or no audio.</li></ul>
   </div>
 
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://lectrosonics.com/wp-content/uploads/filr/3328/LTman_ALL.pdf">LT manual</a> · <a href="https://lectrosonics.com/wp-content/uploads/filr/3376/LRman.pdf">LR manual</a></div>
@@ -677,6 +794,45 @@ body.in-card .suggest-fab { display:none; }
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://lectrosonics.com/wp-content/uploads/filr/3163/M2Tman_ALL.pdf">M2T manual</a> · <a href="https://lectrosonics.com/wp-content/uploads/filr/3426/M2Raman.pdf">M2Ra manual</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Lectrosonics%20Duet%20%28M2T%20/%20M2Ra%29&title=%5BCard%20change%5D%3A%20Lectrosonics%20Duet%20%28M2T%20/%20M2Ra%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Lectrosonics%20Duet%20%28M2T%20/%20M2Ra%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
+<section class="card" id="lectrosonics-d-squared-dbsm-dsqd" data-brand="Lectrosonics" data-model="D Squared (DBSM / DSQD)" data-title="Lectrosonics D Squared (DBSM / DSQD)" data-badgecls="t-blk" data-badgetxt="FREE-TUNE WITHIN BLOCK" hidden>
+<div class="cardhead"><div class="ch-brand">Lectrosonics</div><h2>D Squared (DBSM / DSQD)</h2><div class="ch-sub">Pure digital · DBSM/DBSMD pack TX · DSQD rack / DSR4 slot RX</div></div>
+<div class="meta">
+    <span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span>
+    <span class="pill"><b>Step</b> 25 kHz — always; no Step Size setting to trip on</span>
+    <span class="pill"><b>Range</b> US DBSM(D)-A1B1 <b>470.100–607.950</b> · DSQD/DSR4 tune 470.1–614.375 (NA locale blocks 608–614)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Lectro DBSM A1B1</span><span class="chip">Lectro DSQD / DSR4</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></span><span class="gb-txt">Same block rule as the rest of the Lectro family: the TX’s <b>range variant</b> (A1B1 / B1C1) must contain the assigned MHz. Unlike Digital Hybrid there is <b>no 100 kHz default</b> — everything steps 25 kHz.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">DBSM / DBSMD (membrane keypad)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Short-press</b> the power button = <b>Standby</b> (RF off, indicator blinks) — do all tuning here.</span></li><li><span class="num">2</span><span class="txt"><b>TopMenu ▸ Xmit ▸ Freq</b>; <kbd>MENU/SEL</kbd> toggles the MHz / kHz fields; <kbd>▲▼</kbd> steps 1 MHz / 25 kHz.</span></li><li><span class="num">3</span><span class="txt">Enable RF with a long press <b>through the 3-count</b> (or <b>Xmit ▸ Rf On? Yes</b>).</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">DSQD (rack) / DSR4 (4-ch slot receiver)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>RF Setup ▸ RF Frequency</b> (<kbd>MENU/SEL</kbd> + <kbd>▲▼</kbd>); or <b>Smart Tune</b> / Frequency Scan.</span></li><li><span class="num">2</span><span class="txt"><b>IR Sync &amp; Encryption ▸ Sync Settings</b> → <b>SEND FREQ</b> (or SEND ALL) → pick channel 1–4 → <b>GO</b>.</span></li><li><span class="num">3</span><span class="txt">Hold the DBSM’s IR port to the receiver — the TX has <b>no sync menu</b>; it just listens → “SUCCESS”.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Built into the power button: <b>short press = Standby (RF off)</b>; releasing a long press <i>before the countdown reaches 3</i> also boots RF-off. Full 3-count (or Xmit ▸ Rf On?) to radiate.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>Xmit ▸ TxPower: 10 / 25 / 50 mW</b>, or <b>HDM</b> = 2 mW high-density mode.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>Compat modes must match end-to-end</b> (D2 vs HDM; DSQD/DSR4 also decode Duet CH1/CH2 and Hybrid modes). Wireless Designer drives the receiver; the TX is reached only via IR.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Encryption <b>key-type</b> mismatch = RF meters but no audio.</li><li>Never set DSQD/DSR4 channels 1+3 or 2+4 to the same frequency.</li><li><b>HDM = 2 mW only</b> — range-check the walk before committing.</li><li>Exit the DSQD setup screen before powering down or settings aren’t saved.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://lectrosonics.com/wp-content/uploads/filr/1940/DBSM_man_ALL.pdf">DBSM/DBSMD manual</a> · <a href="https://lectrosonics.com/wp-content/uploads/filr/3315/DSQDman.pdf">DSQD manual</a> · <a href="https://www.lectrosonics.com/wp-content/uploads/filr/3278/DSR4man.pdf">DSR4 manual</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Lectrosonics%20D%20Squared%20%28DBSM%20/%20DSQD%29&title=%5BCard%20change%5D%3A%20Lectrosonics%20D%20Squared%20%28DBSM%20/%20DSQD%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Lectrosonics%20D%20Squared%20%28DBSM%20/%20DSQD%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
 <section class="card" id="comtek-216-bst-25-pr-216" data-brand="Comtek" data-model="216 (BST-25 / PR-216)" data-title="Comtek 216 (BST-25 / PR-216)" data-badgecls="t-chan" data-badgetxt="CHANNEL CHART ONLY" hidden>
 <div class="cardhead"><div class="ch-brand">Comtek</div><h2>216 (BST-25 / PR-216)</h2><div class="ch-sub">VHF FM IFB / cueing (216–217 MHz) · belt-pack receiver shown</div></div>
 <div class="meta">
@@ -754,6 +910,45 @@ body.in-card .suggest-fab { display:none; }
 
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://cdn.sounddevices.com/wp-content/uploads/2025/04/A20-TX-User-Guide-v8.10.pdf">A20-TX user guide</a> · <a href="https://cdn.sounddevices.com/wp-content/uploads/2024/11/A20-RX-v8.00-User-Guide.pdf">A20-RX user guide</a> · <a href="https://www.sounddevices.com/available-frequencies/">Frequencies by country</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Sound%20Devices%20Astral%20%28A20%29&title=%5BCard%20change%5D%3A%20Sound%20Devices%20Astral%20%28A20%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Sound%20Devices%20Astral%20%28A20%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
+<section class="card" id="zaxcom-zmt4-5-urx100" data-brand="Zaxcom" data-model="(ZMT4.5 / URX100)" data-title="Zaxcom (ZMT4.5 / URX100)" data-badgecls="t-tune" data-badgetxt="FREE-TUNE TO ANY MHz" hidden>
+<div class="cardhead"><div class="ch-brand">Zaxcom</div><h2>(ZMT4.5 / URX100)</h2><div class="ch-sub">Pure digital · ZaxNet 2.4 GHz remote control · no IR anywhere</div></div>
+<div class="meta">
+    <span class="tag t-tune">FREE-TUNE TO ANY MHz</span>
+    <span class="pill"><b>Step</b> 100 kHz (0.1 MHz per INC/DEC press)</span>
+    <span class="pill"><b>Range</b> ZMT4.5 <b>512–608</b> (Blocks 20–23) · ZMT4.6 578–698 · VTX1 VHF 192–217 (FM 215–216.975 = Comtek-compatible)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Zaxcom ZMT4.5 (ZHD48)</span><span class="chip">Zaxcom VTX VHF</span></div>
+  
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
+        <span class="proc-m">ZMT4.5 (micro bodypack TX)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">From Home press <kbd>MENU</kbd> to <b>“UHF Transmit Frequency Set”</b> (TXFREQ).</span></li><li><span class="num">2</span><span class="txt"><kbd>INC</kbd>/<kbd>DEC</kbd>: short press = 0.1 MHz, hold = 0.5 MHz jumps. Direct dial — no groups, no banks.</span></li><li><span class="num">3</span><span class="txt">Keys locked? Hold <kbd>MENU</kbd> + press <kbd>INC</kbd> ×5 to unlock.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
+        <span class="proc-m">URX100 (portable confidence RX; bags run Nova/MRX214)</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>MENU</kbd> to <b>“Frequency Select”</b>; <kbd>CH UP</kbd>/<kbd>CH DOWN</kbd> tune in 0.1 MHz.</span></li><li><span class="num">2</span><span class="txt">Or <b>Frequency Scan</b> → accept the suggested clear freq with <kbd>CH UP</kbd>.</span></li><li><span class="num">3</span><span class="txt"><b>Modulation must match the TX</b> — URX100 decodes ZHD96 / XR / MONO but <b>not ZHD48</b> (ZHD48 needs a current MRX214).</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v"><b>Setup ▸ “Standby Mode After Boot Up”</b>: <b>STANDBY</b> (wakes on MENU press) or <b>REMOTE STANDBY</b> (boots RF-silent, waits for a ZaxNet <b>WAKE</b> from Nova2 / VTX1). <b>Transmit ▸ Record-Only Mode</b> kills UHF entirely.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">ZMT4.5 <b>TX POWER: 10 / 50 mW</b>. VTX1: 10 / 25 / 50 mW.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>No IR.</b> Frequencies can be pushed over <b>ZaxNet 2.4 GHz</b> (Group Code 1–99 + Unit Code 1–200 address each pack; controller = Nova2 “TRX Frequency” or VTX1 remote menu).</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Modulation mode (ZHD48 / ZHD96 / XR) must match TX↔RX — changing it forces a reboot.</li><li>ZHD48 occupies ~50 kHz and can sit 100 kHz apart — expect tighter packing than analog on the report.</li><li>ZaxNet (2.403–2.475 GHz) is a real on-site emitter — coordinate it too.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://zaxcom.com/wp-content/uploads/2022/01/Zaxcom_ZMT4_Manual_April_2021.pdf">ZMT4/4.5 manual</a> · <a href="https://zaxcom.com/wp-content/uploads/2019/05/Zaxcom_URX100_Manual_August_2019.pdf">URX100 manual</a> · <a href="https://zaxcom.com/wp-content/uploads/2025/08/Zaxcom_VTX1_July_2025.pdf">VTX1 manual</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Zaxcom%20%28ZMT4.5%20/%20URX100%29&title=%5BCard%20change%5D%3A%20Zaxcom%20%28ZMT4.5%20/%20URX100%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Zaxcom%20%28ZMT4.5%20/%20URX100%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
 </div>
 </main>
