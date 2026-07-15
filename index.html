@@ -950,6 +950,45 @@ body.in-card .suggest-fab { display:none; }
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://zaxcom.com/wp-content/uploads/2022/01/Zaxcom_ZMT4_Manual_April_2021.pdf">ZMT4/4.5 manual</a> · <a href="https://zaxcom.com/wp-content/uploads/2019/05/Zaxcom_URX100_Manual_August_2019.pdf">URX100 manual</a> · <a href="https://zaxcom.com/wp-content/uploads/2025/08/Zaxcom_VTX1_July_2025.pdf">VTX1 manual</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Zaxcom%20%28ZMT4.5%20/%20URX100%29&title=%5BCard%20change%5D%3A%20Zaxcom%20%28ZMT4.5%20/%20URX100%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Zaxcom%20%28ZMT4.5%20/%20URX100%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
+<section class="card" id="shure-wireless-workbench-wwb-6-7" data-brand="Shure" data-model="Wireless Workbench (WWB 6 &amp;amp; 7)" data-title="Shure Wireless Workbench (WWB 6 &amp;amp; 7)" data-badgecls="na" data-badgetxt="SOFTWARE — CALC ONLY" hidden>
+<div class="cardhead"><div class="ch-brand">Shure</div><h2>Wireless Workbench (WWB 6 &amp;amp; 7)</h2><div class="ch-sub">Software · making WWB accept coordinator-assigned frequencies · nothing on this card transmits</div></div>
+<div class="meta">
+    <span class="tag na">SOFTWARE — CALC ONLY</span>
+    <span class="pill"><b>Step</b> profiles: Robust · Standard · More Frequencies</span>
+    <span class="pill"><b>Range</b> applies only to the WWB calculator on your laptop — it changes nothing on any transmitter</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">“WWB rejects our assigned freqs”</span><span class="chip">Compatibility profile</span><span class="chip">3TO / spacing warnings</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag na">SOFTWARE — CALC ONLY</span></span><span class="gb-txt">The scene: event coordination hands you exact frequencies, you type them into WWB, and WWB flags them (intermod / “3TO” spacing warnings). <b>WWB isn’t overruling the event plan — it’s re-running its own intermod math with conservative default margins.</b> The site-wide coordination already did that work across every rig on site. Relax the <b>compatibility profile</b> so WWB accepts what you were given — do <b>not</b> calculate new frequencies.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">WWB 6</span>
+        <span class="proc-m">WWB 6</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Frequency Coordination</b> tab → click the device-type <b>group header</b>. The header text shows the active profile (“Standard” / “Robust” / “More Frequencies”).</span></li><li><span class="num">2</span><span class="txt">Right sidebar → <b>Compatibility</b> tab → <b>Compatibility Profile</b> drop-down → <b>More Frequencies</b> (try <b>Standard</b> first if you only need a little slack).</span></li><li><span class="num">3</span><span class="txt">Re-enter / keep the assigned freqs and hit <kbd>Calculate</kbd> — the header text updates and the warnings should clear. (The underlying spacing numbers live in <b>Tools ▸ Equipment Profiles ▸ Filtering &amp; Intermods</b>.)</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">WWB 7</span>
+        <span class="proc-m">WWB 7</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>Frequency coordination</b> workspace → click the device <b>header</b> (dark grey bar); <kbd>Ctrl</kbd>-click to select several.</span></li><li><span class="num">2</span><span class="txt"><b>Compatibility</b> tab → profile drop-down → <b>More frequencies</b> (or Standard). Fine control: <b>Channel spacing</b> / <b>Intermod spacing</b> (2- and 3-transmitter) sliders; <kbd>Revert</kbd> undoes, <kbd>Save</kbd> stores a modified profile (shows a *).</span></li><li><span class="num">3</span><span class="txt">Click <kbd>Calculate</kbd>. Default for every future device: <b>Preferences ▸ Coordination ▸ Compatibility</b> → double-click the model’s <b>Coordination Preference</b>.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">DON’T RECALC</span><span class="rf-v">Type the coordinator’s frequencies <b>exactly</b> (double-click the Frequency column in Inventory and type). Relaxing the profile is only to make WWB <i>accept</i> them — <b>don’t press Calculate to generate new frequencies</b> without checking with coordination first.</span></div>
+    <div class="rf-row"><span class="rf-k">TRADE-OFF</span><span class="rf-v"><b>More Frequencies = tighter spacings</b>: less margin against intermod products and short TX-to-RX distances. Fine when the site-wide coordination owns the plan; <b>not</b> a free win when you’re self-coordinating in isolation.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Deploying from WWB: linked Axient pairs update instantly over ShowLink; UHF-R / ULX-D / PSM1000 update the rack, then <b>IR-sync</b> the portables; everything else is tuned by hand (see that system’s card).</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>“3TO”-style warnings are WWB’s own 2- and 3-transmitter third-order intermod spacing rules — a margin policy, not a verdict on the event plan.</li><li>Set the profile <b>per device type</b> — relax only the types you were handed frequencies for.</li><li>If WWB still refuses one specific assigned frequency, don’t nudge it to a nearby number — <b>call coordination</b>; the digits are load-bearing.</li><li>Changing the profile changes calculations only; nothing reaches hardware until you deploy.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://content-files.shure.com/Pubs/WWB/en-US/en-US/adjust-compatibility-settings.html">WWB help — Adjust Compatibility Settings</a> · <a href="https://www.shure.com/en-US/insights/shure-wireless-workbench-6-compatibility-profiles">WWB6 compatibility profiles (Shure)</a> · <a href="https://content-files.shure.com/Pubs/WWB/en-US/en-US/specify-a-frequency-for-a-channel.html">WWB help — Specify a Frequency</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=Shure%20Wireless%20Workbench%20%28WWB%206%20%26amp%3B%207%29&title=%5BCard%20change%5D%3A%20Shure%20Wireless%20Workbench%20%28WWB%206%20%26amp%3B%207%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%20Shure%20Wireless%20Workbench%20%28WWB%206%20%26amp%3B%207%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
 </div>
 </main>
 <a class="suggest-fab" href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose" target="_blank" rel="noopener">Suggest a change</a>
@@ -1011,6 +1050,10 @@ function route(){
   cards.forEach(function(x){x.hidden=true});
   if(c && c.classList.contains('card')){
     c.hidden=false; current=c; home.hidden=true; wrap.hidden=false; document.body.classList.add('in-card');
+    var kt=c.querySelector('.proc.tx .proc-k'), kr=c.querySelector('.proc.rx .proc-k');
+    var dt=kt&&kt.textContent!=='TRANSMITTER', dr=kr&&kr.textContent!=='PORTABLE RECEIVER'&&kr.textContent!=='RECEIVER (RACK)';
+    document.getElementById('seg-tx').innerHTML = dt ? kt.textContent : 'TX — Transmitter<small>beltpack / handheld</small>';
+    document.getElementById('seg-rx').innerHTML = dr ? kr.textContent : (kr&&kr.textContent==='RECEIVER (RACK)' ? 'RX — Rack receiver<small>no portable in-series</small>' : 'RX — Portable receiver<small>camera hop / bag rig</small>');
     setMode(store.get('qdc-mode')||'tx'); store.set('qdc-last',slug);
     window.scrollTo(0,0);
   } else {

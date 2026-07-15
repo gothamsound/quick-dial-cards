@@ -34,6 +34,7 @@ body:
         - Comtek 216 (BST-25 / PR-216)
         - Sound Devices Astral (A20)
         - Zaxcom (ZMT4.5 / URX100)
+        - Shure Wireless Workbench (WWB 6 & 7)
         - Other / general
     validations:
       required: true

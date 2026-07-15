@@ -33,7 +33,7 @@ for sheet in src.split('<section class="sheet">')[1:]:
                       sub=sub, body=body,
                       badgecls=badge.group(1), badgetxt=badge.group(2)))
 
-assert len(cards) == 21, f"expected 16 cards, got {len(cards)}"
+assert len(cards) == 22, f"expected 16 cards, got {len(cards)}"
 
 ISSUE = "https://github.com/gothamsound/quick-dial-cards/issues/new"
 sections = []
@@ -241,6 +241,10 @@ function route(){
   cards.forEach(function(x){x.hidden=true});
   if(c && c.classList.contains('card')){
     c.hidden=false; current=c; home.hidden=true; wrap.hidden=false; document.body.classList.add('in-card');
+    var kt=c.querySelector('.proc.tx .proc-k'), kr=c.querySelector('.proc.rx .proc-k');
+    var dt=kt&&kt.textContent!=='TRANSMITTER', dr=kr&&kr.textContent!=='PORTABLE RECEIVER'&&kr.textContent!=='RECEIVER (RACK)';
+    document.getElementById('seg-tx').innerHTML = dt ? kt.textContent : 'TX — Transmitter<small>beltpack / handheld</small>';
+    document.getElementById('seg-rx').innerHTML = dr ? kr.textContent : (kr&&kr.textContent==='RECEIVER (RACK)' ? 'RX — Rack receiver<small>no portable in-series</small>' : 'RX — Portable receiver<small>camera hop / bag rig</small>');
     setMode(store.get('qdc-mode')||'tx'); store.set('qdc-last',slug);
     window.scrollTo(0,0);
   } else {

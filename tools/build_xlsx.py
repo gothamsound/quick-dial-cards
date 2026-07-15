@@ -20,24 +20,23 @@ for sheet in src.split('<section class="sheet">')[1:]:
     if h1.startswith('Wireless Quick-Dial'): continue
     g = lambda pat: (lambda m: txt(m.group(1)) if m else '')(re.search(pat, sheet, re.S))
     def steps(cls):
-        m = re.search(r'<div class="proc '+cls+r'">.*?<span class="proc-m">(.*?)</span>.*?<ol class="steps">(.*?)</ol>', sheet, re.S)
-        model = txt(m.group(1))
-        st = [txt(x) for x in re.findall(r'<span class="txt">(.*?)</span></li>', m.group(2), re.S)]
-        return model, st
-    txm, txsteps = steps('tx'); rxm, rxsteps = steps('rx')
+        m = re.search(r'<div class="proc '+cls+r'">.*?<span class="proc-k">(.*?)</span>\s*<span class="proc-m">(.*?)</span>.*?<ol class="steps">(.*?)</ol>', sheet, re.S)
+        label = txt(m.group(1)); model = txt(m.group(2))
+        st = [txt(x) for x in re.findall(r'<span class="txt">(.*?)</span></li>', m.group(3), re.S)]
+        return label, model, st
+    txk, txm, txsteps = steps('tx'); rxk, rxm, rxsteps = steps('rx')
     cards.append(dict(
         title=h1, sub=g(r'<div class="sub">(.*?)</div>'),
         badge=g(r'<span class="tag [a-z- ]+">(.*?)</span>'),
         step=g(r'<span class="pill"><b>Step</b>(.*?)</span>'),
         rng=g(r'<span class="pill"><b>Range</b>(.*?)</span>'),
         match=g(r'<div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>(.*?)</span></div>'),
-        txm=txm, txsteps=txsteps, rxm=rxm, rxsteps=rxsteps,
-        safeon=g(r'rf-warn">RF OFF FIRST</span><span class="rf-v">(.*?)</span>'),
-        power=g(r'>RF POWER</span><span class="rf-v">(.*?)</span>'),
+        txk=txk, txm=txm, txsteps=txsteps, rxk=rxk, rxm=rxm, rxsteps=rxsteps,
+        rfrows=[(txt(a),txt(b)) for a,b in re.findall(r'<div class="rf-row"><span class="rf-k[^"]*">(.*?)</span><span class="rf-v">(.*?)</span></div>', sheet, re.S)],
         watch=[txt(x) for x in re.findall(r'<div class="watch">.*?<ul>(.*?)</ul>', sheet, re.S)[0].split('</li>') if txt(x)] if '<div class="watch">' in sheet else [],
         sources=re.findall(r'<div class="sources">.*?</div>', sheet, re.S) and re.findall(r'<a href="([^"]+)">([^<]+)</a>', re.search(r'<div class="sources">(.*?)</div>', sheet, re.S).group(1)) or [],
     ))
-assert len(cards)==21
+assert len(cards)==22
 
 TABS = {'Sennheiser evolution G3 / G4':'Sennheiser ew G3-G4','Sennheiser Digital 6000':'Sennheiser D6000',
  'Sennheiser 2000 Series':'Sennheiser 2000','Sennheiser 3000 / 5000 Series':'Sennheiser 3000-5000',
@@ -47,7 +46,7 @@ TABS = {'Sennheiser evolution G3 / G4':'Sennheiser ew G3-G4','Sennheiser Digital
  'Lectrosonics IFB (IFBlue)':'Lectrosonics IFB','Lectrosonics Duet (M2T / M2Ra)':'Lectrosonics Duet',
  'Comtek 216 (BST-25 / PR-216)':'Comtek 216','Sound Devices Astral (A20)':'Sound Devices Astral',
  'Sennheiser EW-DX':'Sennheiser EW-DX','Shure SLX-D':'Shure SLX-D','Shure UHF-R':'Shure UHF-R',
- 'Lectrosonics D Squared (DBSM / DSQD)':'Lectrosonics D Squared','Zaxcom (ZMT4.5 / URX100)':'Zaxcom'}
+ 'Lectrosonics D Squared (DBSM / DSQD)':'Lectrosonics D Squared','Zaxcom (ZMT4.5 / URX100)':'Zaxcom','Shure Wireless Workbench (WWB 6 & 7)':'Shure WWB'}
 
 INK='FF16181D'; OLIVE='FF6A6F33'; MUT='FF4A4F57'; FILL=PatternFill('solid', fgColor='FFF6F6F1')
 def style(ws,cell,sz=10,b=False,color=INK,wrap=True,fill=False):
@@ -90,7 +89,7 @@ for c in cards:
         style(ws,f'A{r}',b=True).value=k; style(ws,f'B{r}').value=v
         ws.merge_cells(f'B{r}:E{r}')
     r=10
-    for label,model,st in [('TRANSMITTER',c['txm'],c['txsteps']),('PORTABLE RECEIVER',c['rxm'],c['rxsteps'])]:
+    for label,model,st in [(c['txk'],c['txm'],c['txsteps']),(c['rxk'],c['rxm'],c['rxsteps'])]:
         style(ws,f'A{r}',10,True,OLIVE,fill=True).value=f'{label}  -  {model}'
         ws.merge_cells(f'A{r}:E{r}'); r+=1
         for col,h in zip(['A','B','C','D','E'],['Device','Model','Step','Instruction','Notes / Corrections']):
@@ -104,8 +103,9 @@ for c in cards:
             r+=1
         r+=1
     style(ws,f'A{r}',10,True,OLIVE).value='RF POWER & SAFE POWER-ON'; r+=1
-    style(ws,f'A{r}',b=True).value='Power on with RF OFF'; style(ws,f'B{r}').value=c['safeon']; ws.merge_cells(f'B{r}:E{r}'); r+=1
-    style(ws,f'A{r}',b=True).value='RF power'; style(ws,f'B{r}').value=c['power']; ws.merge_cells(f'B{r}:E{r}'); r+=2
+    for k,v in c['rfrows']:
+        style(ws,f'A{r}',b=True).value=k; style(ws,f'B{r}').value=v; ws.merge_cells(f'B{r}:E{r}'); r+=1
+    r+=1
     style(ws,f'A{r}',10,True,OLIVE).value='WATCH OUT'; r+=1
     for wtc in c['watch']:
         style(ws,f'A{r}').value='•  '+wtc; ws.merge_cells(f'A{r}:E{r}'); r+=1
