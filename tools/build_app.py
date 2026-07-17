@@ -60,6 +60,10 @@ body { margin:0; font-family:Arial,Helvetica,sans-serif; color:var(--ink); backg
 a { color:var(--grn); }
 header { position:sticky; top:0; z-index:50; background:#fff; border-bottom:2px solid var(--ink); padding:10px 14px; display:flex; gap:12px; align-items:center; }
 header img { width:118px; height:auto; flex:none; }
+#homebtn { flex:none; display:flex; align-items:center; gap:6px; background:var(--bg); border:1.6px solid var(--line); border-radius:8px; padding:9px 13px; font-size:.95rem; font-weight:700; color:var(--ink); cursor:pointer; }
+#homebtn:hover, #homebtn:active { border-color:var(--grn); color:var(--grn); }
+body.in-card #homebtn { background:var(--grn); border-color:var(--grn); color:#fff; }
+@media(max-width:480px){ #homebtn span { display:none; } #homebtn { padding:9px 11px; } }
 #q { flex:1; min-width:0; font-size:1rem; padding:11px 13px; border:1.6px solid var(--line); border-radius:8px; background:var(--bg); }
 #q:focus { outline:2px solid var(--grn); background:#fff; }
 main { max-width:780px; margin:0 auto; padding:16px 14px 90px; }
@@ -163,6 +167,7 @@ body.in-card .suggest-fab { display:none; }
 <body>
 <header>
 <a href="#" aria-label="Home"><img src="assets/gotham-logo.png" alt="Gotham Sound"></a>
+<button id="homebtn" type="button" aria-label="Home"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/></svg><span>Home</span></button>
 <input id="q" type="search" autocomplete="off" placeholder="Search model — ULX-D, 6000, A20…" aria-label="Search systems">
 </header>
 <main>
@@ -214,24 +219,35 @@ function modelBtn(c){
 function showModels(b){
   var m=$('#models'); m.innerHTML=''; 
   var back=document.createElement('button'); back.className='backrow'; back.textContent='← All brands';
-  back.onclick=function(){m.hidden=true; bx.hidden=false; $('.bigask').hidden=false; $('.reassure').hidden=false;};
+  back.onclick=function(){m.hidden=true; bx.hidden=false; $('.bigask').hidden=false; $$('.reassure').forEach(function(x){x.hidden=false});};
   m.appendChild(back);
   brands[b].forEach(function(c){m.appendChild(modelBtn(c))});
-  bx.hidden=true; $('.bigask').hidden=true; $('.reassure').hidden=true; m.hidden=false;
+  bx.hidden=true; $('.bigask').hidden=true; $$('.reassure').forEach(function(x){x.hidden=true}); m.hidden=false;
 }
 
 /* search */
 var idx=cards.map(function(c){return {c:c, t:(c.dataset.title||'').toLowerCase(), all:c.textContent.toLowerCase()}});
 $('#q').addEventListener('input',function(){
   var q=this.value.trim().toLowerCase(), r=$('#results');
-  if(!q){r.hidden=true; bx.hidden=false; $('.bigask').hidden=false; $('.reassure').hidden=false; $('#models').hidden=true; return;}
+  if(!q){r.hidden=true; bx.hidden=false; $('.bigask').hidden=false; $$('.reassure').forEach(function(x){x.hidden=false}); $('#models').hidden=true; return;}
   var hits=idx.filter(function(e){return e.t.indexOf(q)>-1});
   if(hits.length<6) idx.forEach(function(e){ if(e.t.indexOf(q)===-1 && e.all.indexOf(q)>-1 && hits.indexOf(e)===-1) hits.push(e); });
   r.innerHTML=''; 
   if(!hits.length){ r.innerHTML='<p class="nores">No match — try part of the model name (e.g. “ULX”, “6000”), or <a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=new-system.yml" target="_blank" rel="noopener">request this system</a>.</p>'; }
   hits.slice(0,8).forEach(function(e){r.appendChild(modelBtn(e.c))});
-  bx.hidden=true; $('.bigask').hidden=true; $('.reassure').hidden=true; $('#models').hidden=true; r.hidden=false;
+  bx.hidden=true; $('.bigask').hidden=true; $$('.reassure').forEach(function(x){x.hidden=true}); $('#models').hidden=true; r.hidden=false;
 });
+
+function goHome(){
+  var q=document.getElementById('q'); q.value='';
+  document.getElementById('results').hidden=true; document.getElementById('models').hidden=true;
+  bx.hidden=false; document.querySelector('.bigask').hidden=false;
+  var rs=document.querySelectorAll('.reassure'); for(var i=0;i<rs.length;i++) rs[i].hidden=false;
+  if(location.hash) location.hash=''; else { document.getElementById('home').hidden=false; }
+  window.scrollTo(0,0);
+}
+document.getElementById('homebtn').onclick=goHome;
+document.querySelector('header a[aria-label="Home"]').onclick=function(e){e.preventDefault(); goHome();};
 
 /* routing */
 var wrap=$('#cardwrap'), home=$('#home'), current=null;
