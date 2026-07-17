@@ -33,7 +33,7 @@ for sheet in src.split('<section class="sheet">')[1:]:
                       sub=sub, body=body,
                       badgecls=badge.group(1), badgetxt=badge.group(2)))
 
-assert len(cards) == 24, f"expected 16 cards, got {len(cards)}"
+assert len(cards) == 25, f"expected 16 cards, got {len(cards)}"
 
 ISSUE = "https://github.com/gothamsound/quick-dial-cards/issues/new"
 sections = []

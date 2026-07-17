@@ -1069,6 +1069,45 @@ body.in-card .suggest-fab { display:none; }
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://guide.teradek.com/a/1589935-frequencies-by-region">Teradek frequencies by region</a> · <a href="https://guide.teradek.com/a/1601470-bolt-6-u-nii-5-6ghz-support-by-region">Bolt 6 6 GHz support</a> · <a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">WLAN channel list (IEEE numbering)</a></div>
 <div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=5%20/%206%20GHz%20Channel%20Chart%20%28video%20%26amp%3B%20Wi-Fi%29&title=%5BCard%20change%5D%3A%205%20/%206%20GHz%20Channel%20Chart%20%28video%20%26amp%3B%20Wi-Fi%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%205%20/%206%20GHz%20Channel%20Chart%20%28video%20%26amp%3B%20Wi-Fi%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
 </section>
+<section class="card" id="2-4-ghz-auto-hop-mics-dji-rode-hollyland" data-brand="Reference" data-model="2.4 GHz Auto-Hop Mics (DJI / Rode / Hollyland)" data-title="2.4 GHz Auto-Hop Mics (DJI / Rode / Hollyland)" data-badgecls="na" data-badgetxt="CANNOT BE COORDINATED" hidden>
+<div class="cardhead"><div class="ch-brand">Reference</div><h2>2.4 GHz Auto-Hop Mics (DJI / Rode / Hollyland)</h2><div class="ch-sub">Consumer digital mics · adaptive frequency hopping · there is no frequency to dial</div></div>
+<div class="meta">
+    <span class="tag na">CANNOT BE COORDINATED</span>
+    <span class="pill"><b>Step</b> none — the radio picks its own hops, continuously</span>
+    <span class="pill"><b>Range</b> 2.400–2.4835 GHz ISM (DJI Mic 3 can also use 5.1–5.8 GHz)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">DJI Mic / Mic 2 / Mic Mini</span><span class="chip">Rode Wireless GO II / PRO / ME</span><span class="chip">Hollyland Lark M2 / Max</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag na">CANNOT BE COORDINATED</span></span><span class="gb-txt">These mics <b>hop across the whole 2.4 GHz ISM band automatically</b> (DJI: GFSK; Rode: “Series IV” digital; Hollyland: adaptive frequency hopping). <b>No menu, sync, or app setting pins them to a frequency</b> — on a coordination report they can only appear as a wideband 2.4 GHz occupant, never as an assigned channel.</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">WHAT THEY ARE</span>
+        <span class="proc-m">All 2.4 GHz ISM, all auto-hop</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><b>DJI</b> Mic / Mic 2 / Mic Mini: 2.400–2.4835 GHz, GFSK, &lt; 20 dBm EIRP (Mic 3 adds 5.1–5.8 GHz).</span></li><li><span class="num">2</span><span class="txt"><b>Rode</b> Wireless GO II / PRO / ME: “Series IV” 2.4 GHz digital, 128-bit encryption, auto-pairing.</span></li><li><span class="num">3</span><span class="txt"><b>Hollyland</b> Lark M2 / Max: 2.4 GHz adaptive frequency hopping, &lt; 20 dBm EIRP.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">WHAT TO TELL THE CREW</span>
+        <span class="proc-m">Kindly, at the check-in table</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">These can’t take an assigned frequency — <b>that’s the design, not a setting you’re missing</b>.</span></li><li><span class="num">2</span><span class="txt">They share 2.4 GHz with venue Wi-Fi, Bluetooth, ZaxNet, and comms — count them on the walk anyway; every one raises the noise floor.</span></li><li><span class="num">3</span><span class="txt">Power off units that aren’t actively shooting; if reliability matters, hand them a coordinated UHF pack instead.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">SATURATION</span><span class="rf-v"><b>Saturation is the endgame:</b> each link needs clean hop-space. Cluster enough of them (plus Wi-Fi, Bluetooth, ZaxNet) in one small area and the band fills — <b>all of them start dropping at once</b>, and no settings menu can fix physics.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">Fixed by regulation, not by menu: ISM-band devices run &lt; 20 dBm EIRP and must tolerate each other’s interference (FCC Part 15). Range claims (100–400 m LOS) assume a quiet band — an event floor is not one.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">HISTORY BONUS</span><span><b>Why they hop:</b> frequency-hopping spread spectrum was co-invented in 1942 by actress <b>Hedy Lamarr</b> and composer George Antheil — <a href="https://patents.google.com/patent/US2292387A/en">US Patent 2,292,387, “Secret Communication System”</a>. Every mic on this card is her great-grandchild.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Nothing on this card is field-tunable — if a crew insists their unit “has a channel setting,” it’s a pairing menu, not a frequency menu.</li><li>DJI Mic 3 in 5 GHz mode lands in the same U-NII bands as Teradek video — see the 5/6 GHz chart card.</li><li>These are fine tools in isolation; the problem is <i>density</i>.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://www.dji.com/mic-2/specs">DJI Mic 2 specs</a> · <a href="https://rode.com/en-us/microphones/wireless/wirelessgoii">Rode Wireless GO II</a> · <a href="https://www.hollyland.com/product/lark-max">Hollyland Lark Max specs</a> · <a href="https://patents.google.com/patent/US2292387A/en">Lamarr FHSS patent (1942)</a> · <a href="https://lemelson.mit.edu/resources/hedy-lamarr">Hedy Lamarr — MIT Lemelson</a></div>
+<div class="cardfoot"><a href="https://github.com/gothamsound/quick-dial-cards/issues/new?template=suggest-change.yml&card=2.4%20GHz%20Auto-Hop%20Mics%20%28DJI%20/%20Rode%20/%20Hollyland%29&title=%5BCard%20change%5D%3A%202.4%20GHz%20Auto-Hop%20Mics%20%28DJI%20/%20Rode%20/%20Hollyland%29" target="_blank" rel="noopener">Something wrong on this card? Suggest a fix →</a><br>No GitHub account (you really should)? <a href="mailto:peters@gothamsound.com?subject=quickdialchange&body=Card%3A%202.4%20GHz%20Auto-Hop%20Mics%20%28DJI%20/%20Rode%20/%20Hollyland%29%0A%0AWhat%20it%20says%20now%3A%0A%0AWhat%20it%20should%20say%3A%0A%0ASource%3A%0A%0ACredit%20me%20as%20%28or%20say%20no%20thanks%29%3A%0A">Email it here</a>.</div>
+</section>
 </div>
 </main>
 <a class="suggest-fab" href="https://github.com/gothamsound/quick-dial-cards/issues/new/choose" target="_blank" rel="noopener">Suggest a change</a>
