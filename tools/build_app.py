@@ -11,7 +11,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 src = (ROOT / "print.html").read_text()
 
 BRANDS = ["Sennheiser", "Shure", "Sony", "Wisycom", "Lectrosonics",
-          "Comtek", "Sound Devices", "Zaxcom"]
+          "Comtek", "Sound Devices", "Zaxcom", "Teradek"]
 
 def slugify(t):
     t = re.sub(r"&[a-z]+;", " ", t)
@@ -26,14 +26,14 @@ for sheet in src.split('<section class="sheet">')[1:]:
     subm = re.search(r'<div class="sub">(.*?)</div>', sheet, re.S)
     sub = re.sub(r"\s+", " ", subm.group(1)).strip() if subm else ""
     body = re.search(r'(<div class="meta">.*?)\s*<footer class="foot">', sheet, re.S).group(1)
-    brand = next(b for b in BRANDS if h1.startswith(b))
-    model = h1[len(brand):].strip()
+    brand = next((b for b in BRANDS if h1.startswith(b)), 'Reference')
+    model = h1[len(brand):].strip() if brand != 'Reference' else h1
     badge = re.search(r'<span class="tag ([a-z-]+)">([^<]*)</span>', body)
     cards.append(dict(slug=slugify(h1), title=h1, brand=brand, model=model,
                       sub=sub, body=body,
                       badgecls=badge.group(1), badgetxt=badge.group(2)))
 
-assert len(cards) == 22, f"expected 16 cards, got {len(cards)}"
+assert len(cards) == 24, f"expected 16 cards, got {len(cards)}"
 
 ISSUE = "https://github.com/gothamsound/quick-dial-cards/issues/new"
 sections = []
@@ -146,6 +146,13 @@ kbd { font-family:'DejaVu Sans Mono',Menlo,monospace; font-size:.86rem; font-wei
 .watch li { font-size:.95rem; line-height:1.45; margin-bottom:5px; }
 .sources { font-size:.84rem; color:var(--mut); margin-top:14px; line-height:1.6; border-top:1px dashed var(--line); padding-top:9px; }
 .sources .s-t { font-weight:800; letter-spacing:.08em; font-size:.68rem; color:var(--oli); margin-right:6px; }
+table.bandtable { width:100%; border-collapse:collapse; font-size:.86rem; margin:0 0 12px; background:#fff; }
+table.bandtable th { background:var(--ink); color:#fff; font-size:.68rem; letter-spacing:.04em; text-transform:uppercase; text-align:left; padding:7px 9px; }
+table.bandtable td { border-bottom:1px solid var(--line); padding:7px 9px; vertical-align:top; }
+table.bandtable tr.dfs td { background:#fdf3e4; }
+table.bandtable tr.ok td { background:#eef7ef; }
+.chn { font-family:'DejaVu Sans Mono',Menlo,monospace; font-size:.78rem; }
+.no-seg .seg { display:none; }
 .cardfoot { margin-top:18px; border-top:1px solid var(--line); padding-top:12px; font-size:.9rem; }
 .suggest-fab { position:fixed; right:16px; bottom:16px; background:var(--grn); color:#fff; font-weight:700; font-size:.92rem; padding:11px 17px; border-radius:26px; text-decoration:none; box-shadow:0 2px 8px rgba(0,0,0,.25); z-index:60; }
 .suggest-fab:hover { background:var(--grn-d); }
@@ -241,6 +248,7 @@ function route(){
   cards.forEach(function(x){x.hidden=true});
   if(c && c.classList.contains('card')){
     c.hidden=false; current=c; home.hidden=true; wrap.hidden=false; document.body.classList.add('in-card');
+    wrap.classList.toggle('no-seg', !c.querySelector('.procs'));
     var kt=c.querySelector('.proc.tx .proc-k'), kr=c.querySelector('.proc.rx .proc-k');
     var dt=kt&&kt.textContent!=='TRANSMITTER', dr=kr&&kr.textContent!=='PORTABLE RECEIVER'&&kr.textContent!=='RECEIVER (RACK)';
     document.getElementById('seg-tx').innerHTML = dt ? kt.textContent : 'TX — Transmitter<small>beltpack / handheld</small>';

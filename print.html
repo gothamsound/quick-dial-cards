@@ -80,6 +80,12 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 .r-badge { width:25%; }
 .r-badge .tag { display:inline-block; }
 .genrule { font-size:8.7pt; line-height:1.4; background:#fbfaf3; border:1px solid #ece9d4; border-left:4px solid #A6A82B; border-radius:5px; padding:8px 11px; margin-top:8px; }
+table.bandtable { width:100%; border-collapse:collapse; font-size:8.4pt; margin:0 0 10px; }
+table.bandtable th { background:#16181d; color:#fff; font-size:7.4pt; letter-spacing:.04em; text-transform:uppercase; text-align:left; padding:4px 8px; }
+table.bandtable td { border-bottom:1px solid #e3e3da; padding:3.5px 8px; vertical-align:top; }
+table.bandtable tr.dfs td { background:#fdf3e4; }
+table.bandtable tr.ok td { background:#eef7ef; }
+.chn { font-family:'DejaVu Sans Mono',monospace; font-size:7.8pt; }
 /* 16-card index: compact the router so the index stays on one page */
 .router { font-size:8.6pt; }
 .router td { padding:2.6px 8px; }
@@ -132,7 +138,9 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <tr><td class="r-lbl">Shure UHF-R (UR1/UR2)</td><td class="r-card">Shure UHF-R</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Shure PSM-1000 (P10T / P10R+)</td><td class="r-card">Shure PSM 1000</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr><tr><td class="r-lbl">Sony UWP / UWP-D (UTX…)</td><td class="r-card">Sony UWP-D</td><td class="r-badge"><span class="tag t-grp">PICK FINE GROUP FIRST</span></td></tr><tr><td class="r-lbl">Sony DWX (DWR / DWT)</td><td class="r-card">Sony DWX Digital</td><td class="r-badge"><span class="tag t-grp">PICK FINE GROUP FIRST</span></td></tr><tr><td class="r-lbl">Wisycom MTP / MCR</td><td class="r-card">Wisycom MTP / MCR</td><td class="r-badge"><span class="tag t-grp">PICK FINE GROUP FIRST</span></td></tr><tr><td class="r-lbl">Lectrosonics block units (SMV/SMQV…)</td><td class="r-card">Lectrosonics Digital Hybrid</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Lectrosonics wideband (LT / LR “3 Block”)</td><td class="r-card">Lectrosonics L-Series wideband</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Lectrosonics IFB (IFBT4 → IFBlue)</td><td class="r-card">Lectrosonics IFB (IFBlue)</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Lectrosonics Duet (M2T → M2R / M2Ra)</td><td class="r-card">Lectrosonics Duet (M2T / M2Ra)</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr>
 <tr><td class="r-lbl">Lectro DBSM/DBSMD (D2)</td><td class="r-card">Lectrosonics D Squared (DBSM / DSQD)</td><td class="r-badge"><span class="tag t-blk">FREE-TUNE WITHIN BLOCK</span></td></tr><tr><td class="r-lbl">Comtek 216 (BST-25/216 → PR-216)</td><td class="r-card">Comtek 216 (BST-25 / PR-216)</td><td class="r-badge"><span class="tag t-chan">CHANNEL CHART ONLY</span></td></tr><tr><td class="r-lbl">Sound Devices Astral (A20-TX/Mini/HH)</td><td class="r-card">Sound Devices Astral (A20)</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr>
 <tr><td class="r-lbl">Zaxcom ZMT (ZaxNet)</td><td class="r-card">Zaxcom (ZMT4.5 / URX100)</td><td class="r-badge"><span class="tag t-tune">FREE-TUNE TO ANY MHz</span></td></tr>
-<tr><td class="r-lbl">Crew’s WWB rejects assigned freqs</td><td class="r-card">Shure Wireless Workbench (WWB 6 &amp; 7)</td><td class="r-badge"><span class="tag na">SOFTWARE — CALC ONLY</span></td></tr><tr><td class="r-lbl">Generic / unspecified model</td><td class="r-card">— verify the actual hardware at check-in</td><td class="r-badge"><span class="tag na">VERIFY</span></td></tr></tbody>
+<tr><td class="r-lbl">Crew’s WWB rejects assigned freqs</td><td class="r-card">Shure Wireless Workbench (WWB 6 &amp; 7)</td><td class="r-badge"><span class="tag na">SOFTWARE — CALC ONLY</span></td></tr>
+<tr><td class="r-lbl">Teradek video (Bolt / Ranger)</td><td class="r-card">Teradek Bolt / Ranger (wireless video)</td><td class="r-badge"><span class="tag t-chan">LOCK TO ONE CHANNEL</span></td></tr>
+<tr><td class="r-lbl">5/6 GHz channel ⇄ MHz lookup</td><td class="r-card">5 / 6 GHz Channel Chart</td><td class="r-badge"><span class="tag na">REFERENCE CHART</span></td></tr><tr><td class="r-lbl">Generic / unspecified model</td><td class="r-card">— verify the actual hardware at check-in</td><td class="r-badge"><span class="tag na">VERIFY</span></td></tr></tbody>
   </table>
 
   <div class="genrule">
@@ -144,14 +152,14 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
   </div>
 
   <footer class="foot">
-    <span>22 cards · transmitter + portable receiver each (card 22 = software)</span>
+    <span>24 cards · incl. software (22) and 5/6 GHz video (23–24)</span>
     <span>Prepared by Gotham Sound</span>
   </footer>
 </section>
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 1 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 1 OF 24</div>
       <h1>Sennheiser evolution G3 / G4</h1>
       <div class="sub">Analog UHF · portable (camera) receiver shown</div>
     </div>
@@ -203,7 +211,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 2 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 2 OF 24</div>
       <h1>Sennheiser EW-DX</h1>
       <div class="sub">Digital UHF · no portable RX in-series — EW-DP EK is the camera option</div>
     </div>
@@ -254,7 +262,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 3 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 3 OF 24</div>
       <h1>Sennheiser Digital 6000</h1>
       <div class="sub">Digital UHF · portable (camera) receiver shown</div>
     </div>
@@ -305,7 +313,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 4 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 4 OF 24</div>
       <h1>Sennheiser 2000 Series</h1>
       <div class="sub">Analog UHF (high-band) · portable (camera) receiver shown</div>
     </div>
@@ -357,7 +365,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 5 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 5 OF 24</div>
       <h1>Sennheiser 3000 / 5000 Series</h1>
       <div class="sub">SK 5212-II bodypack · SKM 5200-II handheld · SKP 3000 plug-on — EK 3241 portable receiver</div>
     </div>
@@ -409,7 +417,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 6 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 6 OF 24</div>
       <h1>Shure SLX-D</h1>
       <div class="sub">Digital UHF · SLXD5 is the portable receiver</div>
     </div>
@@ -461,7 +469,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 7 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 7 OF 24</div>
       <h1>Shure ULX-D</h1>
       <div class="sub">Digital UHF · (no portable receiver — half-rack ULXD4 shown)</div>
     </div>
@@ -512,7 +520,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 8 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 8 OF 24</div>
       <h1>Shure Axient Digital</h1>
       <div class="sub">Digital UHF · portable receiver shown</div>
     </div>
@@ -564,7 +572,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 9 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 9 OF 24</div>
       <h1>Shure UHF-R</h1>
       <div class="sub">Analog UHF (legacy — still everywhere) · UR1/UR2 TX · UR4D rack RX</div>
     </div>
@@ -615,7 +623,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 10 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 10 OF 24</div>
       <h1>Shure PSM 1000  (IEM / IFB)</h1>
       <div class="sub">Analog FM (networked control) · the bodypack IS the portable receiver</div>
     </div>
@@ -666,7 +674,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 11 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 11 OF 24</div>
       <h1>Sony UWP-D</h1>
       <div class="sub">Analog UHF + digital audio · portable receiver shown</div>
     </div>
@@ -717,7 +725,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 12 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 12 OF 24</div>
       <h1>Sony DWX Digital</h1>
       <div class="sub">Digital UHF · portable (slot) receiver shown</div>
     </div>
@@ -768,7 +776,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 13 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 13 OF 24</div>
       <h1>Wisycom MTP / MCR</h1>
       <div class="sub">Wideband UHF · portable receiver shown</div>
     </div>
@@ -819,7 +827,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 14 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 14 OF 24</div>
       <h1>Lectrosonics Digital Hybrid</h1>
       <div class="sub">Block UHF · portable (slot) receiver shown</div>
     </div>
@@ -870,7 +878,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 15 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 15 OF 24</div>
       <h1>Lectrosonics L-Series wideband</h1>
       <div class="sub">Digital Hybrid UHF · spans 3 legacy blocks · portable receiver shown</div>
     </div>
@@ -922,7 +930,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 16 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 16 OF 24</div>
       <h1>Lectrosonics IFB (IFBlue)</h1>
       <div class="sub">Block UHF/VHF IFB — talent &amp; crew cue feeds · portable receiver shown</div>
     </div>
@@ -973,7 +981,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 17 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 17 OF 24</div>
       <h1>Lectrosonics Duet (M2T / M2Ra)</h1>
       <div class="sub">Digital UHF IEM / IFB · the bodypack IS the portable receiver</div>
     </div>
@@ -1025,7 +1033,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 18 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 18 OF 24</div>
       <h1>Lectrosonics D Squared (DBSM / DSQD)</h1>
       <div class="sub">Pure digital · DBSM/DBSMD pack TX · DSQD rack / DSR4 slot RX</div>
     </div>
@@ -1077,7 +1085,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 19 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 19 OF 24</div>
       <h1>Comtek 216 (BST-25 / PR-216)</h1>
       <div class="sub">VHF FM IFB / cueing (216–217 MHz) · belt-pack receiver shown</div>
     </div>
@@ -1129,7 +1137,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 20 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 20 OF 24</div>
       <h1>Sound Devices Astral (A20)</h1>
       <div class="sub">Digital wideband (SpectraBand) · portable receiver shown</div>
     </div>
@@ -1181,7 +1189,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 21 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 21 OF 24</div>
       <h1>Zaxcom (ZMT4.5 / URX100)</h1>
       <div class="sub">Pure digital · ZaxNet 2.4 GHz remote control · no IR anywhere</div>
     </div>
@@ -1233,7 +1241,7 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
 <section class="sheet">
   <header class="head">
     <div class="head-l">
-      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 22 OF 22</div>
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 22 OF 24</div>
       <h1>Shure Wireless Workbench (WWB 6 &amp; 7)</h1>
       <div class="sub">Software · making WWB accept coordinator-assigned frequencies · nothing on this card transmits</div>
     </div>
@@ -1273,6 +1281,107 @@ table.router td { border-bottom:1px solid #e3e3da; padding:4.5px 9px; vertical-a
   </div>
 
   <div class="sources"><span class="s-t">SOURCES</span><a href="https://content-files.shure.com/Pubs/WWB/en-US/en-US/adjust-compatibility-settings.html">WWB help — Adjust Compatibility Settings</a> · <a href="https://www.shure.com/en-US/insights/shure-wireless-workbench-6-compatibility-profiles">WWB6 compatibility profiles (Shure)</a> · <a href="https://content-files.shure.com/Pubs/WWB/en-US/en-US/specify-a-frequency-for-a-channel.html">WWB help — Specify a Frequency</a></div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 23 OF 24</div>
+      <h1>Teradek Bolt / Ranger (wireless video)</h1>
+      <div class="sub">5 / 6 GHz zero-delay video · lock it to one channel so it can’t hop</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag t-chan">LOCK TO ONE CHANNEL</span>
+    <span class="pill"><b>Step</b> 20 MHz per link (factory default is 40 MHz — twice the footprint)</span>
+    <span class="pill"><b>Range</b> 5 GHz U-NII-1/2/3 · 6 GHz U-NII-5 5.925–6.425 (Bolt 6 · Bolt 4K LT-HDMI · Ranger Mk II/Micro)</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Teradek Bolt 6 (6 GHz)</span><span class="chip">Teradek Bolt 4K (5 GHz)</span><span class="chip">Teradek Ranger</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-chan">LOCK TO ONE CHANNEL</span></span><span class="gb-txt">Out of the box a Bolt <b>auto-hops across the whole band at 40 MHz</b>. On a coordinated site it must sit still: <b>Fixed Frequency on, one assigned channel, 20 MHz</b> — set identically on <b>both TX and RX</b> (“ensure that both the transmitter and receiver have Fixed Frequency Mode enabled”).</span></div>
+
+  <div class="procs">
+    <div class="proc tx">
+      <div class="proc-h"><span class="proc-k">LOCK THE FREQUENCY</span>
+        <span class="proc-m">Same steps on TX and RX</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>Menu</kbd> → <b>Wireless Settings</b> → <b>Enable Fixed Frequency</b> — on <b>both</b> TX and RX (“bypasses any automatic frequency switching logic”).</span></li><li><span class="num">2</span><span class="txt">Then <b>Wireless Settings ▸ Frequencies</b>: select <b>only the assigned channel</b>. If you skip this, Bolt silently defaults to the <b>lowest</b> frequency in the list.</span></li><li><span class="num">3</span><span class="txt">Fixed mode offers <b>non-DFS channels only</b> — if your assignment is a DFS channel, the unit cannot lock there; call coordination.</span></li></ol>
+    </div>
+    <div class="proc rx">
+      <div class="proc-h"><span class="proc-k">LOCK 20 MHz + BAND</span>
+        <span class="proc-m">Same steps on TX and RX</span></div>
+      <ol class="steps"><li><span class="num">1</span><span class="txt"><kbd>Menu</kbd> → <b>Wireless Settings</b> → <b>Bandwidth</b> → <b>20MHz</b> (default 40) — both ends must match. 20 MHz carries up to <b>1080p60</b>; 4K59/60 needs 40 MHz.</span></li><li><span class="num">2</span><span class="txt">6 GHz-capable units: <b>Wireless Settings ▸ Band</b> → 5GHz or 6GHz per the assignment — both ends; hopping never spans bands.</span></li><li><span class="num">3</span><span class="txt">Sanity-check with the <b>Spectrum Analyzer</b> (RX front panel / Bolt app). Changed the Region setting? <b>Re-pair</b> TX and RX.</span></li></ol>
+    </div>
+  </div>
+
+  <div class="rfbar">
+    <div class="rf-row"><span class="rf-k rf-warn">NO DFS LOCK</span><span class="rf-v"><b>Fixed Frequency = non-DFS only.</b> DFS ranges (5.25–5.35 / 5.47–5.725 GHz) need a 1-minute radar scan and can be forced to vacate — don’t assign video links there.</span></div>
+    <div class="rf-row"><span class="rf-k">FOOTPRINT</span><span class="rf-v">6 GHz (U-NII-5) runs at <b>lower allowed power</b> than 5 GHz but has <b>no DFS</b>. At 20 MHz a Bolt 6 offers <b>36 channel choices</b> vs 24 at 40 MHz.</span></div>
+  </div>
+
+  <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>Ranger</b> is the special case: spans 4.9–6.0 GHz including <b>licensed channels</b> — enable <b>Allow Licensed Channels</b> + Fixed Frequency to pick one (licensed operations only).</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Serv / Prism / Cube are <b>IP encoders on ordinary Wi-Fi</b> — nothing to lock on the unit; coordinate the network instead.</li><li>Frequency, bandwidth, and band must match on <b>both ends</b> or the link won’t form.</li><li>See the companion <b>5/6 GHz channel chart</b> card for channel ⇄ MHz mapping.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://guide.teradek.com/a/1601336-wireless-configuration">Bolt 6 wireless configuration</a> · <a href="https://guide.teradek.com/a/1625378-wireless-configuration">Bolt 4K wireless configuration</a> · <a href="https://guide.teradek.com/a/1601470-bolt-6-u-nii-5-6ghz-support-by-region">Bolt 6 GHz support by region</a> · <a href="https://guide.teradek.com/a/1589935-frequencies-by-region">Frequencies by region chart</a></div>
+
+  <footer class="foot">
+    <span>Wireless Quick-Dial Cards</span>
+    <span>Always confirm the dialed MHz against the coordination report. &nbsp;·&nbsp; Prepared by Gotham Sound</span>
+  </footer>
+</section>
+
+<section class="sheet">
+  <header class="head">
+    <div class="head-l">
+      <div class="eyebrow">QUICK-DIAL CARD &nbsp;&middot;&nbsp; 24 OF 24</div>
+      <h1>5 / 6 GHz Channel Chart (video &amp; Wi-Fi)</h1>
+      <div class="sub">Generic 20 MHz channelization · channel ⇄ center MHz · who can go to 6 GHz</div>
+    </div>
+    <img class="logo" src="assets/gotham-logo.png" alt="Gotham Sound"/>
+  </header>
+
+  <div class="meta">
+    <span class="tag na">REFERENCE CHART</span>
+    <span class="pill"><b>Center MHz</b> = 5000 + 5×ch (5 GHz) &nbsp;·&nbsp; 5950 + 5×ch (6 GHz)</span>
+    <span class="pill"><b>40 MHz</b> = two adjacent 20 MHz slots</span>
+  </div>
+
+  <div class="labelrow"><span class="ll">Use with:</span><span class="chip">Teradek Bolt / Ranger card</span><span class="chip">Venue Wi-Fi / IP video coordination</span></div>
+
+  <table class="bandtable">
+    <tr><th>5 GHz band</th><th>Span (MHz)</th><th>20 MHz channels (center MHz)</th><th>Rules</th></tr>
+    <tr class="ok"><td><b>U-NII-1</b></td><td>5150–5250</td><td class="chn">36 (5180) · 40 (5200) · 44 (5220) · 48 (5240)</td><td><b>No DFS — lockable</b></td></tr>
+    <tr class="dfs"><td><b>U-NII-2A</b></td><td>5250–5350</td><td class="chn">52 (5260) · 56 (5280) · 60 (5300) · 64 (5320)</td><td>DFS — radar scan, can be evicted</td></tr>
+    <tr class="dfs"><td><b>U-NII-2C</b></td><td>5470–5725</td><td class="chn">100 (5500) · 104 · 108 · 112 · 116 · 120 · 124 · 128 · 132 · 136 · 140 · 144 (5720)</td><td>DFS — radar scan, can be evicted</td></tr>
+    <tr class="ok"><td><b>U-NII-3</b></td><td>5725–5850</td><td class="chn">149 (5745) · 153 (5765) · 157 (5785) · 161 (5805) · 165 (5825)</td><td><b>No DFS — lockable</b>, but shared with venue Wi-Fi</td></tr>
+  </table>
+
+  <table class="bandtable">
+    <tr><th>6 GHz band</th><th>Span (MHz)</th><th>20 MHz channels (center MHz)</th><th>Rules</th></tr>
+    <tr class="ok"><td><b>U-NII-5</b></td><td>5925–6425</td><td class="chn">1 (5955) · 5 (5975) · 9 (5995) … step +4 ch / +20 MHz … 93 (6415)</td><td><b>No DFS</b>; lower power (LPI); <b>only band Teradek uses</b></td></tr>
+    <tr><td><b>U-NII-6</b></td><td>6425–6525</td><td class="chn">97 (6435) – 113 (6515)</td><td rowspan="3">Wi-Fi 6E/7 only — no Teradek products here; venue APs may be</td></tr>
+    <tr><td><b>U-NII-7</b></td><td>6525–6875</td><td class="chn">117 (6535) – 185 (6875)</td></tr>
+    <tr><td><b>U-NII-8</b></td><td>6875–7125</td><td class="chn">189 (6895) – 233 (7115)</td></tr>
+  </table>
+
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-chan">6 GHz CAPABLE</span></span><span class="gb-txt"><b>Teradek units that can take a 6 GHz assignment:</b> Bolt 6 XT (750 / 1500 / MAX / 10K RX) · Bolt 6 LT (750 / 1500 / MAX) · Bolt 6 LT-HDMI · Bolt 6 Monitor Module · <b>Bolt 4K LT-HDMI</b> (firmware ≥ 4.3.0 — the only Bolt 4K that can) · <b>Ranger Mk II</b> · <b>Ranger Micro</b>. Everything else Teradek is 5 GHz only.</span></div>
+
+  <div class="watch">
+    <span class="w-t">WATCH OUT</span>
+    <ul><li>Teradek fixed-frequency locks only exist in the <b>green rows</b> (U-NII-1, U-NII-3, U-NII-5).</li><li>A 40 MHz link eats <b>two</b> adjacent 20 MHz slots — count both when charting.</li><li>Venue Wi-Fi lives in these same bands; 6 GHz (U-NII-5) is usually the cleanest room on site.</li></ul>
+  </div>
+
+  <div class="sources"><span class="s-t">SOURCES</span><a href="https://guide.teradek.com/a/1589935-frequencies-by-region">Teradek frequencies by region</a> · <a href="https://guide.teradek.com/a/1601470-bolt-6-u-nii-5-6ghz-support-by-region">Bolt 6 6 GHz support</a> · <a href="https://en.wikipedia.org/wiki/List_of_WLAN_channels">WLAN channel list (IEEE numbering)</a></div>
 
   <footer class="foot">
     <span>Wireless Quick-Dial Cards</span>
