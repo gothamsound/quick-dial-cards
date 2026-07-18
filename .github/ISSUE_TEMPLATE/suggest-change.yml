@@ -36,7 +36,7 @@ body:
         - Zaxcom (ZMT4.5 / URX100)
         - Shure Wireless Workbench (WWB 6 & 7)
         - Teradek Bolt / Ranger (wireless video)
-        - 5 / 6 GHz Channel Chart
+        - 5 / 6 GHz Channel Chart (video & Wi-Fi)
         - 2.4 GHz Auto-Hop Mics (DJI / Rode / Hollyland)
         - Other / general
     validations:

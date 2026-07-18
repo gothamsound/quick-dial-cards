@@ -21,6 +21,7 @@ cards = []
 for sheet in src.split('<section class="sheet">')[1:]:
     h1 = re.search(r"<h1>(.*?)</h1>", sheet, re.S).group(1)
     h1 = re.sub(r"\s+", " ", h1).strip()
+    h1 = html.unescape(h1)
     if h1.startswith("Wireless Quick-Dial"):
         continue  # index/legend page — the app home replaces it
     subm = re.search(r'<div class="sub">(.*?)</div>', sheet, re.S)
