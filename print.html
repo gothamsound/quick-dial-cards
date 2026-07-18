@@ -859,7 +859,7 @@ table.bandtable tr.ok td { background:#eef7ef; }
 
   <div class="rfbar">
     <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Boot in <b>STANDBY</b> (RF off): with power OFF, briefly press <kbd>AUDIO</kbd>+<kbd>FREQ</kbd> together — powers up showing <b>“rf OFF”</b>. Set the freq, then leave Standby to transmit.</span></div>
-    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>50 / 100 / 250 mW</b> in the Power menu (250 mW not on the 941 band).</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>50 / 100 / 250 mW</b> (941 variants: 50/100). Set from <b>OFF</b>: hold <kbd>UP</kbd>, press <kbd>AUDIO</kbd>+<kbd>FREQ</kbd> together → step to the <b>Pr</b> screen (<kbd>AUDIO</kbd>/<kbd>FREQ</kbd>) → <kbd>▲▼</kbd> to pick → <kbd>AUDIO</kbd>+<kbd>FREQ</kbd> to exit, then power on.</span></div>
   </div>
 
   <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Block = the fixed hardware range; it can’t be changed in the field on single-block units. Match TX and RX blocks. (The SRc is itself a 3-block wideband RX — set its <b>STEPSIZE</b> 25/100 to match.)</span></div>
@@ -910,7 +910,7 @@ table.bandtable tr.ok td { background:#eef7ef; }
 
   <div class="rfbar">
     <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Power the LT / LMb on in <b>Standby Mode</b> (RF off) and do all tuning there; turn <b>Rf On</b> from the Main / Power menu once set. <b>AutoOn</b> in the Power menu controls whether RF comes up at boot.</span></div>
-    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>50 / 100 mW</b> (Power menu).</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">LT: <kbd>MENU/SEL</kbd> → <b>TxPower</b> → <kbd>▲▼</kbd> <b>50 / 100 mW</b> → <kbd>MENU/SEL</kbd>. SMWB/SMDWB, same path: <b>25 / 50 / 100 mW</b>. LMb: fixed 50 mW — no menu.</span></div>
   </div>
 
   <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>TX and RX ranges must overlap on the assigned MHz (A1 / B1 / C1 spans). <b>Step Size must match on both ends</b> — same rule as the block-units card, wider hardware.</span></div>
@@ -962,7 +962,7 @@ table.bandtable tr.ok td { background:#eef7ef; }
 
   <div class="rfbar">
     <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">Set the IFBT4 switch to <b>TUNE</b> — RF is off (a blinking <b>“T”</b> shows) and the freq can only be changed here. Flip to <b>XMIT</b> once set.</span></div>
-    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">IFBT4: ~250 mW. IFBT2.0: selectable <b>10 / 25 / 50 / 100 / 250 mW</b>.</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v">IFBT4: fixed ≈250 mW. IFBT2.0: <kbd>MENU/SEL</kbd> → <b>RF ENABLE/LEVEL</b> → <kbd>SEL</kbd> per carrier → <kbd>▲▼</kbd> <b>10 / 25 / 50 / 100 / 250 mW</b>; leave the setup screen before power-down or it won’t save.</span></div>
   </div>
 
   <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span><b>No sync.</b> Set the <b>same MHz</b> on TX and RX, keep both in the same <b>compatibility mode</b>, and make sure the RX range covers the TX frequency. A <b>pilot tone</b> keeps the RX muted until it sees a valid signal.</span></div>
@@ -1013,7 +1013,7 @@ table.bandtable tr.ok td { background:#eef7ef; }
 
   <div class="rfbar">
     <div class="rf-row"><span class="rf-k rf-warn">RF OFF FIRST</span><span class="rf-v">The <b>RF Enable/Level</b> menu keeps each carrier OFF until you explicitly enable it — tune first, enable second. Same habit as the SMV standby boot, just menu-driven.</span></div>
-    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><b>10 / 25 / 50 mW per carrier</b> (RF Enable/Level menu).</span></div>
+    <div class="rf-row"><span class="rf-k">RF POWER</span><span class="rf-v"><kbd>MENU/SEL</kbd> → <b>RF ENABLE/LEVEL</b> → <kbd>SEL</kbd> steps carrier/field → <kbd>▲▼</kbd> to enable and set <b>10 / 25 / 50 mW per carrier</b> → <kbd>BACK</kbd>.</span></div>
   </div>
 
   <div class="linkbar"><span class="lk-t">MATCHING TX &amp; RX</span><span>Transmitter is the rack (M2T), receiver is the belt-pack (M2Ra) — reverse of a mic, like PSM 1000. 2-way IR sync moves settings in either direction.</span></div>
