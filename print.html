@@ -740,13 +740,13 @@ table.bandtable tr.ok td { background:#eef7ef; }
   </div>
 
   <div class="labelrow"><span class="ll">Typical report label:</span><span class="chip">Sony DWR / DWT (“TV1417”, “DWT 15-075”…)</span></div>
-  <div class="groupbar"><span class="gb-tag"><span class="tag t-grp">PICK FINE GROUP FIRST</span></span><span class="gb-txt">Two paths: <b>FREQ INPUT</b> (RX1/RX2 menu) dials an exact MHz digit-by-digit (last two digits 00/25/50/75) and offers to push it to the paired TX — or <b>Band → Group → Channel</b>: bands are TV-channel <i>blocks</i> (TV14-25, TV26-38…), <b>groups</b> are single-TV-channel 25 kHz lists (e.g. Group 21) plus intermod presets (D1–D7, 01–07, Group 00).</span></div>
+  <div class="groupbar"><span class="gb-tag"><span class="tag t-grp">PICK FINE GROUP FIRST</span></span><span class="gb-txt">Two paths: <b>FREQ INPUT</b> (RX1/RX2 menu) dials an exact MHz digit-by-digit (last two digits 00/25/50/75) and offers to push it to the paired TX — or <b>Band → Group → Channel</b>: bands are TV-channel <i>blocks</i> (TV14-25, TV26-38…). <b>Group 00 = free tuning</b> across the unit’s whole band in <b>125 kHz</b> steps (Sony doesn’t intermod-protect it — fine when coordination owns the plan). Single-TV-channel groups (e.g. Group 21) step <b>25 kHz</b> within one TV channel; D1–D7 / 01–07 are intermod presets.</span></div>
 
   <div class="procs">
     <div class="proc tx">
       <div class="proc-h"><span class="proc-k">TRANSMITTER</span>
         <span class="proc-m">DWT-B03R / B01N / P-series (TX)</span></div>
-      <ol class="steps"><li><span class="num">1</span><span class="txt">Power OFF, hold <kbd>SET</kbd> and turn on → setting mode (transmission stopped).</span></li><li><span class="num">2</span><span class="txt"><kbd>+</kbd>/<kbd>–</kbd> to <b>GP/CH</b>; hold <kbd>SET</kbd> until <b>GROUP</b> flashes → pick the TV-channel group; <kbd>SET</kbd>.</span></li><li><span class="num">3</span><span class="txt"><b>CHANNEL</b> flashes → set to the channel = assigned <b>MHz</b>; <kbd>SET</kbd>. Power-cycle to transmit.</span></li></ol>
+      <ol class="steps"><li><span class="num">1</span><span class="txt">Power OFF, hold <kbd>SET</kbd> and turn on → setting mode (transmission stopped).</span></li><li><span class="num">2</span><span class="txt"><kbd>+</kbd>/<kbd>–</kbd> to <b>GP/CH</b>; hold <kbd>SET</kbd> until <b>GROUP</b> flashes → pick <b>GP 00</b> for free tuning (any freq on the 125&nbsp;kHz raster); <kbd>SET</kbd>.</span></li><li><span class="num">3</span><span class="txt"><b>CHANNEL</b> flashes → set to the channel = assigned <b>MHz</b>; <kbd>SET</kbd>. Power-cycle to transmit. (Assignment on a .025/.075 offset? GP 00 can’t land there — use the TV-channel group instead.)</span></li></ol>
     </div>
     <div class="proc rx">
       <div class="proc-h"><span class="proc-k">PORTABLE RECEIVER</span>
